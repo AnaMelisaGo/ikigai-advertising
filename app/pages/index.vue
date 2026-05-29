@@ -1,7 +1,9 @@
 <template>
-    <div class="mt-20">
-        <h1 class="text-3xl font-bold">Hello World!</h1>
+    <div>
+        <h1 class="text-3xl font-bold font-heading">Hello World!</h1>
         <p>This is Ikigai Advertising</p>
-        <p class="text-lg p-6">This is a simple page</p>
+        <p class="text-lg p-6 font-body">This is a simple page</p>
     </div>
 </template>
+<style scoped>
+</style>
