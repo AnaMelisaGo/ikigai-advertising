@@ -1,20 +1,62 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, nextTick, watch } from 'vue'
+import gsap from 'gsap'
 
 const mobileOpen = ref(false)
 const servicesOpen = ref(false)
 const ownBrandsOpen = ref(false)
 const servicesMenuRef = ref(null)
 
+// panels
+const mainMobileMenu = ref(null)
+const servicesMobileMenu = ref(null)
+
+//timeline
+let servicesTimeline
+
+const buildServicesTimeline = () => {
+    servicesTimeline?.kill() // Kill existing timeline if it exists
+    gsap.set(mainMobileMenu.value, {
+        xPercent: 0
+    })
+
+    gsap.set(servicesMobileMenu.value, {
+        xPercent: 100
+    })
+    // Initialize GSAP timeline for services submenu
+    servicesTimeline = gsap.timeline({ paused: true, defaults: {duration: 0.35, ease: 'power3.inOut'} })
+    servicesTimeline.to(mainMobileMenu.value, { xPercent: -100 }).to(servicesMobileMenu.value, { xPercent: 0 }, 0)
+}
+
+// open and close mobile menu
+const openMobile = () => {
+    mobileOpen.value = true
+}
+
+const closeMenu = () => {
+    mobileOpen.value = false
+    // reset submenu back to the main menu
+    servicesTimeline?.pause(0)
+}
+
+const openServicesMenu = () => {
+    servicesTimeline.play()
+}
+
+const backToMainMenu = () => {
+    servicesTimeline.reverse()
+}
+
+// services data except Own Brands
 const services = [
     { name: 'Graphics', link: '#' },
     { name: 'Events', link: '#' },
     { name: 'Digital', link: '#' },
 ]
 
-const toggleMenu = () => {
-    mobileOpen.value = !mobileOpen.value
-}
+// const toggleMenu = () => {
+//     mobileOpen.value = !mobileOpen.value
+// }
 
 const toggleServices = () => {
     servicesOpen.value = !servicesOpen.value
@@ -26,7 +68,6 @@ const closeServicesOnClickOutside = (event) => {
     }
 }
 
-
 // Close mobile menu on window resize
 const handleResize = () => {
     if (window.innerWidth >= 768) {
@@ -34,13 +75,19 @@ const handleResize = () => {
     }
 }
 
-const closeMenu = () => {
-    mobileOpen.value = false
-}
+watch(mobileOpen, async (isOpen) => {
+    if (isOpen) {
+        await nextTick() // Wait for the DOM to update
+        buildServicesTimeline() // Build the timeline after the DOM is ready
+    }
+})
 
 onMounted(() => {
-    window.addEventListener('resize', handleResize)
+    // Add event listener for clicks outside the services menu
     document.addEventListener('click', closeServicesOnClickOutside)
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize)
 })
 
 onBeforeUnmount(() => {
@@ -98,7 +145,7 @@ onBeforeUnmount(() => {
                 class="relative h-8 w-8 cursor-pointer md:hidden" 
                 aria-label="Toggle menu" 
                 :aria-expanded="mobileOpen"
-                @click="toggleMenu"
+                @click="openMobile"
             >
                 <span class="burger-line top-1"></span>
                 <span class="burger-line top-1/2"></span>
@@ -115,12 +162,20 @@ onBeforeUnmount(() => {
             </Transition>
             <Transition name="slide">
                 <aside v-if="mobileOpen" class="mobile-menu bg-gris-carbon/90 md:hidden">
-                    <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="/">Inicio</NuxtLink>
-                    <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#">Quienes Somos</NuxtLink>
-                    <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#">Servicios</NuxtLink>
-                    <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#">RSC</NuxtLink>
-                    <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#">Portfolio</NuxtLink>
-                    <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#">Contacto</NuxtLink>
+                    <!-- Mobile Menu Content -->
+                    <div ref="mainMobileMenu" class="absolute inset-0 flex flex-col py-8">
+                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="/" @click="closeMenu">Inicio</NuxtLink>
+                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">Quienes Somos</NuxtLink>
+                        <div class="mobile-link text-gray-300 cursor-pointer" active-class="bg-accent text-white" @click="openServicesMenu">Servicios</div>
+                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">RSC</NuxtLink>
+                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">Portfolio</NuxtLink>
+                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">Contacto</NuxtLink>
+                    </div>
+                    <div ref="servicesMobileMenu" class="absolute inset-0 flex flex-col py-8">
+                        <button type="button" class="text-left font-semibold text-gray-400 ps-4 cursor-pointer" @click="backToMainMenu">Back</button>
+                        <NuxtLink v-for="service in services" :key="service.name" class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">{{  service.name }}</NuxtLink>
+                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">Subservicio 4</NuxtLink>
+                    </div>
                 </aside>
             </Transition>
         </nav>
@@ -201,16 +256,14 @@ onBeforeUnmount(() => {
     }
 
     .mobile-menu {
-        position: absolute;
+        position: fixed;
         top: 100%;
         right: 0;
         width: 60%;
         height: 100vh;
         padding: 1rem 0;
         z-index: 10;
-
-        display: flex;
-        flex-direction: column;
+        overflow: hidden;
     }
 
     .mobile-link {
