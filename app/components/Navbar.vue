@@ -1,30 +1,237 @@
 <script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+import gsap from 'gsap'
+
+const mobileOpen = ref(false)
+const servicesOpen = ref(false)
+const ownBrandsOpen = ref(false)
+const servicesMenuRef = ref(null)
+const navbar = ref(null)
+
+// panels
+const mainMobileMenu = ref(null)
+const servicesMobileMenu = ref(null)
+
+const burgerTop = ref(null)
+const burgerMiddle = ref(null)
+const burgerBottom = ref(null)
+
+//timeline
+let servicesTimeline
+let burgerTimeline
+let navbarTimeline
+
+let lastscrollY = 0
+
+
+// const buildServicesTimeline = () => {
+//     servicesTimeline?.kill() // Kill existing timeline if it exists
+//     gsap.set(mainMobileMenu.value, {
+//         xPercent: 0
+//     })
+
+//     gsap.set(servicesMobileMenu.value, {
+//         xPercent: 100
+//     })
+//     // Initialize GSAP timeline for services submenu
+//     servicesTimeline = gsap.timeline({ paused: true, defaults: {duration: 0.35, ease: 'power3.inOut'} })
+//     servicesTimeline.to(mainMobileMenu.value, { xPercent: -100 }).to(servicesMobileMenu.value, { xPercent: 0 }, 0)
+// }
+
+// open and close mobile menu
+const openMobile = () => {
+    mobileOpen.value = true
+    burgerTimeline.play()
+}
+
+const closeMenu = () => {
+    mobileOpen.value = false
+    // reset submenu back to the main menu
+    servicesTimeline?.pause(0)
+    burgerTimeline.reverse()
+}
+
+const openServicesMenu = () => {
+    servicesTimeline.play()
+}
+
+const backToMainMenu = () => {
+    servicesTimeline.reverse()
+}
+
+// services data except Own Brands
+const services = [
+    { name: 'Graphics', link: '#' },
+    { name: 'Events', link: '#' },
+    { name: 'Digital', link: '#' },
+]
+
+const toggleMenu = () => {
+    if (mobileOpen.value) {
+        closeMenu()
+    } else {
+        openMobile()
+    }
+}
+
+const toggleServices = () => {
+    servicesOpen.value = !servicesOpen.value
+}
+
+const closeServicesOnClickOutside = (event) => {
+    if (servicesMenuRef.value && !servicesMenuRef.value.contains(event.target)) {
+        servicesOpen.value = false
+    }
+}
+
+// Close mobile menu on window resize
+const handleResize = () => {
+    if (window.innerWidth >= 768) {
+        closeMenu()
+    }
+}
+
+const handleScroll = () => {
+    const currentScrollY = window.scrollY
+    if (currentScrollY > lastscrollY && currentScrollY > 100) {
+        navbarTimeline.play()
+    } else {
+        navbarTimeline.reverse()
+    }
+    lastscrollY = currentScrollY
+}
+// watch(mobileOpen, async (isOpen) => {
+//     if (isOpen) {
+//         await nextTick() // Wait for the DOM to update
+//         buildServicesTimeline() // Build the timeline after the DOM is ready
+//     }
+// })
+
+onMounted(() => {
+    gsap.set(mainMobileMenu.value, {
+        xPercent: 0
+    })
+
+    gsap.set(servicesMobileMenu.value, {
+        xPercent: 100
+    })
+    // Initialize GSAP timeline for services submenu
+    servicesTimeline = gsap.timeline({ paused: true, defaults: {duration: 0.35, ease: 'power3.inOut'} })
+    servicesTimeline.to(mainMobileMenu.value, { xPercent: -100 }).to(servicesMobileMenu.value, { xPercent: 0 }, 0)
+    
+    // Initialize GSAP timeline for burger menu animation
+    burgerTimeline = gsap.timeline({ paused: true })
+    burgerTimeline.to(burgerTop.value, { y: 13, rotation: 45, transformOrigin: 'center', duration: 0.2 }, 0)
+    burgerTimeline.to(burgerMiddle.value, { opacity: 0, duration: 0.2 }, 0)
+    burgerTimeline.to(burgerBottom.value, { y: -8, rotation: -45, duration: 0.2 }, 0)
+
+    // Initialize GSAP timeline for navbar scroll animation
+    navbarTimeline = gsap.timeline({ paused: true })
+    navbarTimeline.to(navbar.value, {
+        y: '-100%',
+        duration: 0.35,
+        ease: 'power3.inOut'
+    })
+
+    // Add event listener for clicks outside the services menu
+    document.addEventListener('click', closeServicesOnClickOutside)
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize)
+
+    // Add event listener for scroll
+    window.addEventListener('scroll', handleScroll)
+})
+
+onBeforeUnmount(() => {
+    window.removeEventListener('resize', handleResize)
+    document.removeEventListener('click', closeServicesOnClickOutside)
+    window.removeEventListener('scroll', handleScroll)
+})
+
 </script>
 <template>
     <header>
-        <nav class="navbar backdrop-blur-sm bg-white/70 shadow-md">
+        <nav ref="navbar" class="navbar backdrop-blur-sm shadow-md">
             <div class="logo">
                 <NuxtLink class="text-xl font-bold" to="/">
                     Ikigai Advertising
                 </NuxtLink>
             </div>
             <!-- Desktop Menu -->
-            <div class="hidden items-center gap-10 md:flex">
-                <NuxtLink class="nav-link" to="/">Inicio</NuxtLink>
-                <NuxtLink class="nav-link" to="#">Quienes Somos</NuxtLink>
-                <NuxtLink class="nav-link" to="#">Servicios</NuxtLink>
-                <NuxtLink class="nav-link" to="#">Portfolio</NuxtLink>
-                <NuxtLink class="nav-link" to="#">Contacto</NuxtLink>
-                <!-- <div class="navbar-start">
-                </div> -->
+            <div class="hidden items-center gap-8 md:flex sm:gap-6">
+                <NuxtLink class="nav-link hover:bg-primary/40 text-gray-700" active-class="bg-accent text-white" to="/"  @mouseenter="servicesOpen = false">Inicio</NuxtLink>
+                <NuxtLink class="nav-link hover:bg-primary/40 text-gray-700" active-class="bg-accent text-white" to="/about" @mouseenter="servicesOpen = false">Quienes Somos</NuxtLink>
+                <div class="nav-link relative hover:bg-primary/40 text-gray-700" @mouseenter="servicesOpen = true" @click="toggleServices" ref="servicesMenuRef">
+                    <div active-class="bg-accent text-white">
+                        Servicios
+                    </div>
+                    <Transition name="dropdown">
+                        <div class="dropdown-menu shadow-lg" v-show="servicesOpen" @mouseenter="servicesOpen = true" @mouseleave="servicesOpen = false">
+                            <NuxtLink v-for="service in services" :key="service.name" class="px-4 py-2 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="bg-accent text-white" :to="service.link" @click="servicesOpen = false">
+                                {{ service.name }}
+                            </NuxtLink>
+
+                            <div class="relative px-4 py-2 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="bg-accent text-white" @mouseenter="ownBrandsOpen = true" @mouseleave="ownBrandsOpen = false">
+                                Own Brands
+                                <Transition name="subdropdown">
+                                    <div class="sub-dropdown-menu shadow-lg" v-show="ownBrandsOpen" @mouseenter="ownBrandsOpen = true" @mouseleave="ownBrandsOpen = false">
+                                        <NuxtLink class="block px-4 py-2 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="bg-accent text-white" to="#">
+                                            Vibe Music Wear
+                                        </NuxtLink>
+                                        <NuxtLink class="block px-4 py-2 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="bg-accent text-white" to="#">
+                                            Tiento Fest
+                                        </NuxtLink>
+                                    </div>
+                                </Transition>
+                            </div>
+                        </div>
+                    </Transition> 
+                </div>
+                <NuxtLink class="nav-link hover:bg-primary/40 text-gray-700" active-class="bg-accent text-white" to="#"  @mouseenter="servicesOpen = false">RSC</NuxtLink>
+                <NuxtLink class="nav-link hover:bg-primary/40 text-gray-700" active-class="bg-accent text-white" to="#" @mouseenter="servicesOpen = false">Portfolio</NuxtLink>
+                <NuxtLink class="nav-link hover:bg-primary/40 text-gray-700" active-class="bg-accent text-white" to="#" @mouseenter="servicesOpen = false">Contacto</NuxtLink>
             </div>
 
             <!-- Mobile Menu -->
-            <button type="button" class="relative h-8 w-8 md:hidden" aria-label="Toggle menu">
-                <span class="burger-line top-1"></span>
-                <span class="burger-line top-1/2"></span>
-                <span class="burger-line bottom-1"></span>
+            <button 
+                type="button" 
+                class="relative h-8 w-8 cursor-pointer z-2 md:hidden" 
+                aria-label="Toggle menu" 
+                :aria-expanded="mobileOpen"
+                @click="toggleMenu"
+            >
+                <span ref="burgerTop" class="burger-line top-1"></span>
+                <span ref="burgerMiddle" class="burger-line top-1/2"></span>
+                <span ref="burgerBottom" class="burger-line bottom-1"></span>
             </button>
+
+            <!-- Overlay -->
+            <Transition name="fade">
+                <div 
+                    v-show="mobileOpen" 
+                    class="overlay" 
+                    @click="closeMenu"
+                />
+            </Transition>
+            <Transition name="slide">
+                <aside v-show="mobileOpen" class="mobile-menu bg-gris-carbon/90 md:hidden">
+                    <!-- Mobile Menu Content -->
+                    <div ref="mainMobileMenu" class="absolute inset-0 flex flex-col py-8">
+                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="/" @click="closeMenu">Inicio</NuxtLink>
+                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="/about" @click="closeMenu">Quienes Somos</NuxtLink>
+                        <div class="mobile-link text-gray-300 cursor-pointer" active-class="bg-accent text-white" @click="openServicesMenu">Servicios</div>
+                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">RSC</NuxtLink>
+                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">Portfolio</NuxtLink>
+                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">Contacto</NuxtLink>
+                    </div>
+                    <div ref="servicesMobileMenu" class="absolute inset-0 flex flex-col py-8">
+                        <button type="button" class="text-left font-semibold text-gray-400 ps-4 cursor-pointer" @click="backToMainMenu">Back</button>
+                        <NuxtLink v-for="service in services" :key="service.name" class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">{{  service.name }}</NuxtLink>
+                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">Subservicio 4</NuxtLink>
+                    </div>
+                </aside>
+            </Transition>
         </nav>
     </header>
 </template>
@@ -35,11 +242,12 @@
         left: 0;
         z-index: 50;
         width: 100%;
+        background: #f8f9fa;
 
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 1rem;
+        padding: 1rem 2rem 1rem 1rem;
     }
 
     .logo {
@@ -50,7 +258,46 @@
     }
     .nav-link {
         position: relative;
-        padding-bottom: 4px;
+        padding: 6px 10px;
+        font-size: calc(1rem + 0.25vw);
+
+        /* border: 1px solid black; */
+        border-radius: 10px;
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: 4.1rem;
+        left: -50%;
+        width: 200px;
+        background: #1f2937;
+        border-radius: 10px;
+        padding: 0.5rem 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sub-dropdown-menu {
+        position: absolute;
+        top: 0;
+        left: 12.5rem;
+        border-radius: 10px;
+        padding: 0.5rem 0;
+        width: 200px;
+
+        background: #1f2937;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.05);
+        z-index: 1;
     }
 
     .burger-line {
@@ -61,4 +308,59 @@
         background: black;
         transition: transform 0.2s ease, opacity 0.2s ease
     }
+
+    .mobile-menu {
+        position: fixed;
+        top: 100%;
+        right: 0;
+        width: 60%;
+        height: 100vh;
+        padding: 1rem 0;
+        z-index: 10;
+        overflow: hidden;
+    }
+
+    .mobile-link {
+        padding: 0.75rem 3.25rem;
+        font-size: 1.25rem;
+        /* color: #d1d5dc; */
+        transform: translate(0);
+        transition: all 0.8s ease;
+    }
+
+    .mobile-link:hover {
+        background: var(--color-primary);
+        color: white;
+        transform: translate(2rem);
+    }
+
+    .slide-enter-active, 
+    .slide-leave-active, 
+    .fade-enter-active, 
+    .fade-leave-active,
+    .dropdown-enter-active,
+    .dropdown-leave-active,
+    .subdropdown-enter-active,
+    .subdropdown-leave-active {
+        transition: all 0.8s ease;
+    }
+
+    .slide-enter-from, .slide-leave-to {
+        transform: translateX(100%);
+    }
+
+    .fade-enter-from, .fade-leave-to {
+        opacity: 0;
+    }
+
+    .dropdown-enter-from, .dropdown-leave-to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    .subdropdown-enter-from, .subdropdown-leave-to {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
 </style>
