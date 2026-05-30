@@ -6,6 +6,7 @@ const mobileOpen = ref(false)
 const servicesOpen = ref(false)
 const ownBrandsOpen = ref(false)
 const servicesMenuRef = ref(null)
+const navbar = ref(null)
 
 // panels
 const mainMobileMenu = ref(null)
@@ -18,6 +19,11 @@ const burgerBottom = ref(null)
 //timeline
 let servicesTimeline
 let burgerTimeline
+let navbarTimeline
+
+let lastscrollY = 0
+
+
 // const buildServicesTimeline = () => {
 //     servicesTimeline?.kill() // Kill existing timeline if it exists
 //     gsap.set(mainMobileMenu.value, {
@@ -85,6 +91,15 @@ const handleResize = () => {
     }
 }
 
+const handleScroll = () => {
+    const currentScrollY = window.scrollY
+    if (currentScrollY > lastscrollY && currentScrollY > 100) {
+        navbarTimeline.play()
+    } else {
+        navbarTimeline.reverse()
+    }
+    lastscrollY = currentScrollY
+}
 // watch(mobileOpen, async (isOpen) => {
 //     if (isOpen) {
 //         await nextTick() // Wait for the DOM to update
@@ -104,28 +119,40 @@ onMounted(() => {
     servicesTimeline = gsap.timeline({ paused: true, defaults: {duration: 0.35, ease: 'power3.inOut'} })
     servicesTimeline.to(mainMobileMenu.value, { xPercent: -100 }).to(servicesMobileMenu.value, { xPercent: 0 }, 0)
     
+    // Initialize GSAP timeline for burger menu animation
     burgerTimeline = gsap.timeline({ paused: true })
-
     burgerTimeline.to(burgerTop.value, { y: 13, rotation: 45, transformOrigin: 'center', duration: 0.2 }, 0)
     burgerTimeline.to(burgerMiddle.value, { opacity: 0, duration: 0.2 }, 0)
     burgerTimeline.to(burgerBottom.value, { y: -8, rotation: -45, duration: 0.2 }, 0)
+
+    // Initialize GSAP timeline for navbar scroll animation
+    navbarTimeline = gsap.timeline({ paused: true })
+    navbarTimeline.to(navbar.value, {
+        y: '-100%',
+        duration: 0.35,
+        ease: 'power3.inOut'
+    })
 
     // Add event listener for clicks outside the services menu
     document.addEventListener('click', closeServicesOnClickOutside)
 
     // Add event listener for window resize
     window.addEventListener('resize', handleResize)
+
+    // Add event listener for scroll
+    window.addEventListener('scroll', handleScroll)
 })
 
 onBeforeUnmount(() => {
     window.removeEventListener('resize', handleResize)
     document.removeEventListener('click', closeServicesOnClickOutside)
+    window.removeEventListener('scroll', handleScroll)
 })
 
 </script>
 <template>
     <header>
-        <nav class="navbar backdrop-blur-sm shadow-md">
+        <nav ref="navbar" class="navbar backdrop-blur-sm shadow-md">
             <div class="logo">
                 <NuxtLink class="text-xl font-bold" to="/">
                     Ikigai Advertising
@@ -269,7 +296,7 @@ onBeforeUnmount(() => {
         left: 0;
         width: 100%;
         height: 100vh;
-        background: rgba(0, 0, 0, 0.1);
+        background: rgba(0, 0, 0, 0.05);
         z-index: 1;
     }
 
