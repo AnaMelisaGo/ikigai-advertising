@@ -11,9 +11,13 @@ const servicesMenuRef = ref(null)
 const mainMobileMenu = ref(null)
 const servicesMobileMenu = ref(null)
 
+const burgerTop = ref(null)
+const burgerMiddle = ref(null)
+const burgerBottom = ref(null)
+
 //timeline
 let servicesTimeline
-
+let burgerTimeline
 // const buildServicesTimeline = () => {
 //     servicesTimeline?.kill() // Kill existing timeline if it exists
 //     gsap.set(mainMobileMenu.value, {
@@ -31,12 +35,14 @@ let servicesTimeline
 // open and close mobile menu
 const openMobile = () => {
     mobileOpen.value = true
+    burgerTimeline.play()
 }
 
 const closeMenu = () => {
     mobileOpen.value = false
     // reset submenu back to the main menu
     servicesTimeline?.pause(0)
+    burgerTimeline.reverse()
 }
 
 const openServicesMenu = () => {
@@ -54,9 +60,13 @@ const services = [
     { name: 'Digital', link: '#' },
 ]
 
-// const toggleMenu = () => {
-//     mobileOpen.value = !mobileOpen.value
-// }
+const toggleMenu = () => {
+    if (mobileOpen.value) {
+        closeMenu()
+    } else {
+        openMobile()
+    }
+}
 
 const toggleServices = () => {
     servicesOpen.value = !servicesOpen.value
@@ -93,6 +103,13 @@ onMounted(() => {
     // Initialize GSAP timeline for services submenu
     servicesTimeline = gsap.timeline({ paused: true, defaults: {duration: 0.35, ease: 'power3.inOut'} })
     servicesTimeline.to(mainMobileMenu.value, { xPercent: -100 }).to(servicesMobileMenu.value, { xPercent: 0 }, 0)
+    
+    burgerTimeline = gsap.timeline({ paused: true })
+
+    burgerTimeline.to(burgerTop.value, { y: 13, rotation: 45, transformOrigin: 'center', duration: 0.2 }, 0)
+    burgerTimeline.to(burgerMiddle.value, { opacity: 0, duration: 0.2 }, 0)
+    burgerTimeline.to(burgerBottom.value, { y: -8, rotation: -45, duration: 0.2 }, 0)
+
     // Add event listener for clicks outside the services menu
     document.addEventListener('click', closeServicesOnClickOutside)
 
@@ -152,14 +169,14 @@ onBeforeUnmount(() => {
             <!-- Mobile Menu -->
             <button 
                 type="button" 
-                class="relative h-8 w-8 cursor-pointer md:hidden" 
+                class="relative h-8 w-8 cursor-pointer z-2 md:hidden" 
                 aria-label="Toggle menu" 
                 :aria-expanded="mobileOpen"
-                @click="openMobile"
+                @click="toggleMenu"
             >
-                <span class="burger-line top-1"></span>
-                <span class="burger-line top-1/2"></span>
-                <span class="burger-line bottom-1"></span>
+                <span ref="burgerTop" class="burger-line top-1"></span>
+                <span ref="burgerMiddle" class="burger-line top-1/2"></span>
+                <span ref="burgerBottom" class="burger-line bottom-1"></span>
             </button>
 
             <!-- Overlay -->
