@@ -74,10 +74,6 @@ const toggleMenu = () => {
     }
 }
 
-const toggleServices = () => {
-    servicesOpen.value = !servicesOpen.value
-}
-
 const closeServicesOnClickOutside = (event) => {
     if (servicesMenuRef.value && !servicesMenuRef.value.contains(event.target)) {
         servicesOpen.value = false
@@ -118,7 +114,7 @@ onMounted(() => {
     // Initialize GSAP timeline for services submenu
     servicesTimeline = gsap.timeline({ paused: true, defaults: {duration: 0.35, ease: 'power3.inOut'} })
     servicesTimeline.to(mainMobileMenu.value, { xPercent: -100 }).to(servicesMobileMenu.value, { xPercent: 0 }, 0)
-    
+
     // Initialize GSAP timeline for burger menu animation
     burgerTimeline = gsap.timeline({ paused: true })
     burgerTimeline.to(burgerTop.value, { y: 13, rotation: 45, transformOrigin: 'center', duration: 0.2 }, 0)
@@ -152,27 +148,28 @@ onBeforeUnmount(() => {
 </script>
 <template>
     <header>
-        <nav ref="navbar" class="navbar backdrop-blur-sm shadow-md">
+        <nav ref="navbar" class="navbar backdrop-blur-sm shadow-lg">
             <div class="logo">
-                <NuxtLink class="text-xl font-bold" to="/">
-                    Ikigai Advertising
+                <NuxtLink class="text-xl font-bold flex items-center" to="/">
+                    <NuxtImg src="/logo.png" alt="Logo" class="me-2 w-12"/>
+                    <NuxtImg src="/logo-name.png" alt="Logo Text" class="h-10 md:h-10"/>
                 </NuxtLink>
             </div>
             <!-- Desktop Menu -->
-            <div class="hidden items-center gap-8 md:flex sm:gap-6">
+            <div class="hidden sm:hidden items-center gap-8 md:flex md:gap-4">
                 <NuxtLink class="nav-link hover:bg-primary/40 text-gray-700" active-class="bg-accent text-white" to="/"  @mouseenter="servicesOpen = false">Inicio</NuxtLink>
                 <NuxtLink class="nav-link hover:bg-primary/40 text-gray-700" active-class="bg-accent text-white" to="/about" @mouseenter="servicesOpen = false">Quienes Somos</NuxtLink>
-                <div class="nav-link relative hover:bg-primary/40 text-gray-700" @mouseenter="servicesOpen = true" @click="toggleServices" ref="servicesMenuRef">
+                <div class="nav-link relative hover:bg-primary/40 text-gray-700 cursor-pointer" @mouseenter="servicesOpen = true" ref="servicesMenuRef">
                     <div active-class="bg-accent text-white">
                         Servicios
                     </div>
                     <Transition name="dropdown">
                         <div class="dropdown-menu shadow-lg" v-show="servicesOpen" @mouseenter="servicesOpen = true" @mouseleave="servicesOpen = false">
-                            <NuxtLink v-for="service in services" :key="service.name" class="px-4 py-2 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="bg-accent text-white" :to="service.link" @click="servicesOpen = false">
+                            <NuxtLink v-for="service in services" :key="service.name" class="px-15 py-3 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="bg-accent text-white" :to="service.link" @click="servicesOpen = false">
                                 {{ service.name }}
                             </NuxtLink>
 
-                            <div class="relative px-4 py-2 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="bg-accent text-white" @mouseenter="ownBrandsOpen = true" @mouseleave="ownBrandsOpen = false">
+                            <div class="relative px-15 py-3 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="bg-accent text-white" @mouseenter="ownBrandsOpen = true" @mouseleave="ownBrandsOpen = false">
                                 Own Brands
                                 <Transition name="subdropdown">
                                     <div class="sub-dropdown-menu shadow-lg" v-show="ownBrandsOpen" @mouseenter="ownBrandsOpen = true" @mouseleave="ownBrandsOpen = false">
@@ -186,7 +183,7 @@ onBeforeUnmount(() => {
                                 </Transition>
                             </div>
                         </div>
-                    </Transition> 
+                    </Transition>
                 </div>
                 <NuxtLink class="nav-link hover:bg-primary/40 text-gray-700" active-class="bg-accent text-white" to="#"  @mouseenter="servicesOpen = false">RSC</NuxtLink>
                 <NuxtLink class="nav-link hover:bg-primary/40 text-gray-700" active-class="bg-accent text-white" to="#" @mouseenter="servicesOpen = false">Portfolio</NuxtLink>
@@ -194,10 +191,10 @@ onBeforeUnmount(() => {
             </div>
 
             <!-- Mobile Menu -->
-            <button 
-                type="button" 
-                class="relative h-8 w-8 cursor-pointer z-2 md:hidden" 
-                aria-label="Toggle menu" 
+            <button
+                type="button"
+                class="relative h-8 w-8 cursor-pointer z-2 md:hidden"
+                aria-label="Toggle menu"
                 :aria-expanded="mobileOpen"
                 @click="toggleMenu"
             >
@@ -208,16 +205,16 @@ onBeforeUnmount(() => {
 
             <!-- Overlay -->
             <Transition name="fade">
-                <div 
-                    v-show="mobileOpen" 
-                    class="overlay" 
+                <div
+                    v-show="mobileOpen"
+                    class="overlay"
                     @click="closeMenu"
                 />
             </Transition>
             <Transition name="slide">
                 <aside v-show="mobileOpen" class="mobile-menu bg-gris-carbon/90 md:hidden">
                     <!-- Mobile Menu Content -->
-                    <div ref="mainMobileMenu" class="absolute inset-0 flex flex-col py-8">
+                    <div ref="mainMobileMenu" class="absolute inset-0 flex flex-col py-8 overflow-hidden">
                         <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="/" @click="closeMenu">Inicio</NuxtLink>
                         <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="/about" @click="closeMenu">Quienes Somos</NuxtLink>
                         <div class="mobile-link text-gray-300 cursor-pointer" active-class="bg-accent text-white" @click="openServicesMenu">Servicios</div>
@@ -254,7 +251,7 @@ onBeforeUnmount(() => {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 1rem 0;
+        /* padding: 1rem 0; */
     }
     .nav-link {
         position: relative;
@@ -267,12 +264,12 @@ onBeforeUnmount(() => {
 
     .dropdown-menu {
         position: absolute;
-        top: 4.1rem;
+        top: 4.8rem;
         left: -50%;
-        width: 200px;
+        width: 250px;
         background: #1f2937;
         border-radius: 10px;
-        padding: 0.5rem 0;
+        padding: 1rem 0;
         display: flex;
         flex-direction: column;
     }
@@ -280,7 +277,7 @@ onBeforeUnmount(() => {
     .sub-dropdown-menu {
         position: absolute;
         top: 0;
-        left: 12.5rem;
+        left: 15.6rem;
         border-radius: 10px;
         padding: 0.5rem 0;
         width: 200px;
@@ -334,9 +331,9 @@ onBeforeUnmount(() => {
         transform: translate(2rem);
     }
 
-    .slide-enter-active, 
-    .slide-leave-active, 
-    .fade-enter-active, 
+    .slide-enter-active,
+    .slide-leave-active,
+    .fade-enter-active,
     .fade-leave-active,
     .dropdown-enter-active,
     .dropdown-leave-active,
