@@ -246,7 +246,7 @@ onBeforeUnmount(() => {
         left: 0;
         z-index: 50;
         width: 100%;
-        background: #f8f9fa;
+        background: var(--light-gray);
 
         display: flex;
         align-items: center;

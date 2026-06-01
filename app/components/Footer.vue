@@ -4,6 +4,9 @@
       <p>
         &copy; {{ new Date().getFullYear() }} Ikigai Advertising. All rights reserved.
       </p>
+      <p>
+        This is a simple footer for our advertising agency website. We specialize in creating innovative marketing solutions that help businesses grow and succeed in the competitive market.
+      </p>
     </div>
   </footer>
 </template>

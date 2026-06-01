@@ -1,12 +1,13 @@
 <template>
-  <div>
-    <Navbar />
-    <main>
-      <slot />
-    </main>
-    <Footer />
-  </div>
+    <div>
+        <Navbar />
+        <main>
+            <slot />
+        </main>
+        <Footer />
+    </div>
 </template>
+
 <style>
 main {
   padding: 2rem;
