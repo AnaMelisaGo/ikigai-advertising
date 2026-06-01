@@ -5,6 +5,7 @@ import gsap from 'gsap'
 const mobileOpen = ref(false)
 const servicesOpen = ref(false)
 const ownBrandsOpen = ref(false)
+const ownBrandsshow = ref(false)
 const servicesMenuRef = ref(null)
 const navbar = ref(null)
 
@@ -157,9 +158,9 @@ onBeforeUnmount(() => {
             </div>
             <!-- Desktop Menu -->
             <div class="hidden sm:hidden items-center gap-8 md:flex md:gap-4">
-                <NuxtLink class="nav-link hover:bg-primary/40 text-gray-700" active-class="bg-accent text-white" to="/"  @mouseenter="servicesOpen = false">Inicio</NuxtLink>
-                <NuxtLink class="nav-link hover:bg-primary/40 text-gray-700" active-class="bg-accent text-white" to="/about" @mouseenter="servicesOpen = false">Quienes Somos</NuxtLink>
-                <div class="nav-link relative hover:bg-primary/40 text-gray-700 cursor-pointer" @mouseenter="servicesOpen = true" ref="servicesMenuRef">
+                <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="/"  @mouseenter="servicesOpen = false">Inicio</NuxtLink>
+                <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="/about" @mouseenter="servicesOpen = false">Quienes Somos</NuxtLink>
+                <div class="nav-link relative text-gray-700 cursor-pointer" @mouseenter="servicesOpen = true" ref="servicesMenuRef">
                     <div active-class="bg-accent text-white">
                         Servicios
                     </div>
@@ -185,9 +186,9 @@ onBeforeUnmount(() => {
                         </div>
                     </Transition>
                 </div>
-                <NuxtLink class="nav-link hover:bg-primary/40 text-gray-700" active-class="bg-accent text-white" to="#"  @mouseenter="servicesOpen = false">RSC</NuxtLink>
-                <NuxtLink class="nav-link hover:bg-primary/40 text-gray-700" active-class="bg-accent text-white" to="#" @mouseenter="servicesOpen = false">Portfolio</NuxtLink>
-                <NuxtLink class="nav-link hover:bg-primary/40 text-gray-700" active-class="bg-accent text-white" to="#" @mouseenter="servicesOpen = false">Contacto</NuxtLink>
+                <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="#"  @mouseenter="servicesOpen = false">RSC</NuxtLink>
+                <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="#" @mouseenter="servicesOpen = false">Portfolio</NuxtLink>
+                <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="#" @mouseenter="servicesOpen = false">Contacto</NuxtLink>
             </div>
 
             <!-- Mobile Menu -->
@@ -223,13 +224,19 @@ onBeforeUnmount(() => {
                         <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">Contacto</NuxtLink>
                     </div>
                     <div ref="servicesMobileMenu" class="absolute inset-0 flex flex-col py-8">
-                        <button type="button" class="text-left font-semibold text-gray-400 ps-4 cursor-pointer" @click="backToMainMenu">Back</button>
-                        <NuxtLink v-for="service in services" :key="service.name" class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">{{  service.name }}</NuxtLink>
-                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">Subservicio 4</NuxtLink>
+                        <button type="button" class="back-btn text-left font-semibold text-gray-400 ps-4 cursor-pointer" @click="backToMainMenu">
+                            <FontAwesomeIcon icon="fa-solid fa-circle-chevron-left" class="back-icon" /> Back
+                        </button>
+                        <NuxtLink v-for="service in services" :key="service.name" class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu" @mouseenter="ownBrandsshow = false">{{  service.name }}</NuxtLink>
+                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu" @mouseenter="ownBrandsshow = true">Own Brands</NuxtLink>
+                        <div v-show="ownBrandsshow" class="flex flex-col ms-12">
+                            <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">Vibe Music Wear</NuxtLink>
+                            <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">Tiento Fest</NuxtLink>
+                        </div>
                     </div>
                 </aside>
             </Transition>
-        </nav>
+        </nav>  
     </header>
 </template>
 <style scoped>
@@ -260,6 +267,23 @@ onBeforeUnmount(() => {
 
         /* border: 1px solid black; */
         border-radius: 10px;
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 8px;
+        width: 85%;
+        height: 2px;
+        background: var(--color-primary);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+        transform-origin: left;
+    }
+
+    .nav-link:hover::after {
+        transform: scaleX(1);
     }
 
     .dropdown-menu {
@@ -331,6 +355,15 @@ onBeforeUnmount(() => {
         transform: translate(2rem);
     }
 
+    .back-icon {
+        transition: all 0.8s ease;
+    }
+
+    .back-btn:hover .back-icon {
+        transform: translateX(-5px);
+    }
+
+    /* animations */
     .slide-enter-active,
     .slide-leave-active,
     .fade-enter-active,
