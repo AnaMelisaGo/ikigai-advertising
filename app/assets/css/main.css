@@ -12,6 +12,9 @@
     --font-body: 'Inter', sans-serif;
     --font-heading: 'Space Grotesk', sans-serif;
     --gris-carbon: #334155;
+    --color-primary: #06B6D4;
+    --color-accent: #F97316;
+    --light-gray: #f8f9fa;
 }
 
 body {
