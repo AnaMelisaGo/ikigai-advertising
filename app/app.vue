@@ -5,18 +5,15 @@ const splashDone = ref(false)
 function handleSplashFinished() {
     splashDone.value = true
 }
-
 </script>
 
 <template>
     <div>
+        <!-- Splash Screen -->
         <SplashScreen v-if="!splashDone" @finished="handleSplashFinished" />
-        <!-- <SplashScreen /> -->
+        <!-- Main Content -->
         <NuxtLayout v-else>
-        <!-- <NuxtLayout> -->
-        <NuxtPage />
+            <NuxtPage />
         </NuxtLayout>
-        <!-- <NuxtRouteAnnouncer />
-        <NuxtWelcome /> -->
     </div>
 </template>

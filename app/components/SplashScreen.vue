@@ -138,9 +138,6 @@ onMounted(() => {
         }, 5000)
 
     }
-
-    // timeline.to('.splash-screen', { opacity: 1, duration: 1 })
-    // timeline.to('.splash-screen', { opacity: 0, duration: 1, delay: 2 })
 })
 
 </script>
@@ -187,7 +184,6 @@ onMounted(() => {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    /* background-color: var(--color-primary); */
     animation: pulse 2s infinite ease-in-out;
 }
 </style>
