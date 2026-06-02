@@ -1,0 +1,140 @@
+<template>
+    <section class="hero-container">
+        <video
+        autoplay
+        muted
+        loop
+        playsinline
+        class="hero-video"
+        >
+        <source src="/videos/hero-video.mp4" type="video/mp4" />
+         Your browser does not support the video tag.
+        </video>
+        <div class="overlay"></div>
+        <div class="title">
+            <h1>The power of creation</h1>
+            <p>Innovation, creativity, and transformation</p>
+            <button class="cta">Ver Portfolio</button>
+        </div>
+    </section>
+</template>
+<style scoped>
+.hero-container {
+    position: relative;
+    height: 90vh;
+    /* width: 100%; */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: red;
+}
+
+.hero-video {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgb(0 0 0 / 5%) 46%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.title {
+    position: relative;
+
+    color: white;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    top: 90px;
+}
+
+.title h1 {
+    font-size: clamp(2rem, 8vw, 5rem);
+    font-weight: 600;
+    animation: scale-up 1s ease-out forwards;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+}
+
+.title p {
+    animation: typewriter 2s steps(40) forwards, blink 0.7s step-end infinite;
+    animation-delay: 1s;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    border-right: 2px solid white;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+}
+
+.cta {
+    background: rgb(39 39 39 / 22%);
+    margin: 20px;
+    padding: 10px 25px;
+    border: solid 1px white;
+    border-radius: 5px;
+    transition: transform 0.5s ease-in-out, background 0.5s ease, box-shadow 0.5s ease;
+    opacity: 0;
+    animation: slide-down 1s ease-out 3s 1 normal forwards;
+}
+
+.cta:hover {
+    box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.5);
+    background: var(--color-accent);
+    transform: scale(1.3);
+    transform-origin: center;
+}
+
+@keyframes slide-down {
+    from {
+        margin-top: 100px;
+        opacity: 0;
+    }
+    to {
+        margin-top: 20px;
+        opacity: 1;
+    }
+}
+
+/* animations */
+
+@keyframes scale-up {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        transform-origin: center;
+        opacity: 1;
+    }
+}
+
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+    to {
+        width: 31ch;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+</style>
