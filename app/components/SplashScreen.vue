@@ -148,7 +148,7 @@ onMounted(() => {
             <div ref="circle3" class="circle bg-yellow-500/60 top-6 left-1.5"></div>
             <div ref="circle4" class="circle bg-orange-500/60 bottom-1.5 left-6 z-3"></div>
         </div>
-        <h1 ref="logoName" class="logo-name">
+        <h1 ref="logoName" class="font-bold mt-6 text-2xl">
             Welcome to Ikigai Advertising
         </h1>
     </div>
@@ -183,4 +183,5 @@ onMounted(() => {
     border-radius: 50%;
     animation: pulse 2s infinite ease-in-out;
 }
+
 </style>
