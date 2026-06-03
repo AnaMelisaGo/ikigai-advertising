@@ -10,8 +10,7 @@
                     <div class="text-center md:text-left">
                         <h3 class="font-bold mb-2">Quick Links</h3>
                         <ul>
-                            <li><a href="/about">About Us</a></li>
-                            <li><a href="#">Servicios</a></li>
+                            <li><a href="/">Inicio</a></li>
                             <li><a href="#">RSC</a></li>
                             <li><a href="#">Portfolio</a></li>
                         </ul>
@@ -32,10 +31,11 @@
                         </ul>
                     </div>
                     <div class="contacto text-center md:text-left">
-                        <h3 class="font-bold mb-2">Contacto</h3>
-                        <p>Calle Bronce, 5</p>
-                        <p>Moraleja de Enmedio</p>
-                        <p>28950 Madrid</p>
+                        <h3 class="font-bold mb-2">Empresa</h3>
+                        <ul>
+                            <li><a href="/about">Quienes Somos</a></li>
+                            <li><a href="#">Contacto</a></li>
+                        </ul>
                     </div>
                     <div class="flex flex-col items-center">
                         <p>Síguenos</p>
