@@ -45,7 +45,7 @@ onUnmounted(() => {
 <template>
     <div>
         <Hero />
-
+        <!-- Brief about Ikigai -->
         <section ref="section" class="photo-section">
             <div class="photos-wrapper">
                 <div ref="leftPhoto" class="left-column">
@@ -60,6 +60,23 @@ onUnmounted(() => {
             </div>
         </section>
 
+        <section class="services-section">
+            <h2>Nuestros servicios</h2>
+            <div class="circle-container">
+                <div class="green circle">
+                    <h3>Graphics</h3>
+                </div>
+                <div class="yellow circle">
+                    <h3>Events</h3>
+                </div>
+                <div class="orange circle">
+                    <h3>Digital</h3>
+                </div>
+                <div class="pink circle">
+                    <h3>Own Brands</h3>
+                </div>
+            </div>
+        </section>
 
         <h1 class="text-3xl font-bold font-heading">Hello World!</h1>
         <p>This is Ikigai Advertising</p>
@@ -76,6 +93,8 @@ onUnmounted(() => {
     </div>
 </template>
 <style scoped>
+
+/* About Ikigai Section */
 .photo-section {
     display: flex;
     flex-direction: column;
@@ -125,7 +144,101 @@ onUnmounted(() => {
     font-size: 1.2rem;
 }
 
+/* Services Section */
+
+.services-section {
+    padding: 1rem;
+    text-align: center;
+}
+
+.services-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    /* margin-bottom: 2rem; */
+}
+
+.circle-container {
+    /* display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem; */
+    /* display: flex;
+    justify-items: center;
+    align-items: center; */
+    padding: 2rem 1rem;
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    height: 420px;
+    position: relative;
+    margin: 2rem auto;
+}
+.circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: absolute;
+}
+
+.circle h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.green {
+    background: linear-gradient(114deg, #13547a 30%, #80d0c7 100%);
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.yellow {
+    background: linear-gradient(93deg, #f7971e 12% 0%, #ffe153 100%);
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.pink {
+    background: linear-gradient(140deg, rgb(245, 95, 152) 27.2% 12.2%, rgb(250 202 197) 100.2%);
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.orange {
+    background: linear-gradient(to right, rgb(252, 74, 26), rgb(247, 183, 51));
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 @media (min-width: 768px) {
+    .circle-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        position: static;
+        height: auto;
+        max-width: 1000px;
+        flex-wrap: nowrap;
+    }
+
+    .circle {
+        position: static;
+        transform: none;
+        width: 200px;
+        height: 200px;
+        flex-shrink: 0;
+    }
+
+    /* About Ikigai Section */
     .photo-section {
         flex-direction: row;
     }
