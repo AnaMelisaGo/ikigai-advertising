@@ -5,10 +5,8 @@
                 <img src="/logo.png" alt="Ikigai Advertising Logo" class="w-16 h-16" />
                 <img src="/logo-name-light.png" alt="Ikigai Advertising Name" class="w-32" />
             </div>
-            <!-- <div class="footer-left">
-            </div> -->
-            <div class="footer-right">
-                <div class="r-top">
+            <div class="footer-links">
+                <div class="links-top">
                     <div class="text-center md:text-left">
                         <h3 class="font-bold mb-2">Quick Links</h3>
                         <ul>
@@ -27,17 +25,24 @@
                         </ul>
                     </div>
                     <div class="text-center md:text-left">
+                        <h3 class="font-bold mb-2">Own Brands</h3>
+                        <ul>
+                            <li><a href="#">Vibe Music Wear</a></li>
+                            <li><a href="#">Tiento Fest</a></li>
+                        </ul>
+                    </div>
+                    <div class="contacto text-center md:text-left">
                         <h3 class="font-bold mb-2">Contacto</h3>
-                        <p>123 Main Street</p>
-                        <p>City, State 12345</p>
-                        <p>Phone: (123) 456-7890</p>
+                        <p>Calle Bronce, 5</p>
+                        <p>Moraleja de Enmedio</p>
+                        <p>28950 Madrid</p>
                     </div>
                     <div class="flex flex-col items-center">
                         <p>Síguenos</p>
                         <NuxtLink to="https://www.instagram.com/" target="_blank" class="social-icon">
                             <FontAwesomeIcon :icon="['fab', 'instagram']" />
                         </NuxtLink>
-                        
+
                         <div class="social-icons">
                         </div>
                     </div>
@@ -86,7 +91,7 @@
     padding: 1rem;
 }
 
-.footer-right {
+.footer-links {
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -94,30 +99,27 @@
     align-items: center;
 }
 
-.r-top {
+.links-top {
     display: flex;
     flex-direction: column;
     gap: 2rem;
     justify-content: center;
     align-items: center;
 }
-
-/* .contacto {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-} */
 
 .social-icon {
     color: #fff;
     font-size: 2rem;
-    transition: scale 0.8s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.8s ease, color 0.8s ease;
+    transform-origin: center;
 }
 
 .social-icon:hover {
     color: var(--color-accent);
-    scale: 1.3;
+    transform: scale(1.3);
 }
 
 .footer-bottom {
@@ -130,28 +132,39 @@
     width: 100%;
 }
 
+.footer-links .links-top a {
+    color: rgb(213, 213, 213);
+    display: inline-block;
+    transition: transform 0.5s ease, color 0.5s ease;
+    transform-origin: center;
+}
+
+.contacto p {
+    color: rgb(213, 213, 213);
+}
+
+.footer-links .links-top a:hover {
+    color: var(--color-accent);
+    transform: scale(1.2);
+}
+
+.politica li a:hover {
+    color: var(--color-primary);
+}
+
 @media (min-width: 768px) {
     .footer {
         align-items: unset;
     }
     .footer-top {
-        /* flex-direction: row;
-        justify-content: space-around;
-        align-items: flex-start; */
-        gap: 4rem;
+        gap: 2rem;
     }
 
-    /* .footer-logo-container {
-        margin-right: auto;
-    } */
-
-    .r-top {
+    .links-top {
         display: flex;
         flex-direction: row;
         gap: calc(4rem + 2vw);
-        /* justify-content: space-around; */
         align-items: flex-start;
-        /* padding: 0 2rem; */
         margin: auto;
     }
 
@@ -163,15 +176,13 @@
         display: flex;
         justify-content: space-around;
         gap: 1rem;
-}
     }
-
     .politica {
         display: flex;
         gap: 1rem;
         justify-content: center;
         align-items: center;
         margin-left: auto;
-    
+    }
 }
 </style>
