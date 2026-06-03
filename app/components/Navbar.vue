@@ -288,7 +288,7 @@ onBeforeUnmount(() => {
 
     .dropdown-menu {
         position: absolute;
-        top: 4.8rem;
+        top: 3.9rem;
         left: -50%;
         width: 250px;
         background: #1f2937;

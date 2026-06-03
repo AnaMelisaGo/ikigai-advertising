@@ -9,10 +9,10 @@ const section = ref(null)
 const leftPhoto = ref(null)
 const rightPhoto = ref(null)
 
-let trigger
+let timeline
 
 onMounted(() => {
-    const timeline = gsap.timeline({
+    timeline = gsap.timeline({
         scrollTrigger: {
             trigger: section.value,
             start: 'top 80%',
@@ -34,7 +34,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-    timeline.scrollTriger?.kill() // Clean up the ScrollTrigger
+    timeline.scrollTrigger?.kill() // Clean up the ScrollTrigger
     timeline.kill() // clean up the timeline
 })
 
@@ -163,12 +163,12 @@ onUnmounted(() => {
     align-items: center;
     color: white;
     position: absolute;
-    animation: pulse 2s infinite alternate;
     transition: transform 0.8s ease;
 }
 
 .circle:hover {
     transform: scale(1.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .circle h3 {
@@ -190,7 +190,6 @@ onUnmounted(() => {
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    animation-delay: 0.3s;
 }
 
 .pink {
@@ -198,7 +197,6 @@ onUnmounted(() => {
     top: 50%;
     right: 0;
     transform: translateY(-50%);
-    animation-delay: 0.8s;
 }
 
 .orange {
@@ -206,16 +204,6 @@ onUnmounted(() => {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    animation-delay: 0.6s;
-}
-
-@keyframes pulse {
-    from {
-        transform: scale(1);
-    }
-    to {
-        transform: scale(1.1);
-    }
 }
 
 @media (min-width: 768px) {
