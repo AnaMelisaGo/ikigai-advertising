@@ -59,7 +59,7 @@ onUnmounted(() => {
                 </div>
             </div>
         </section>
-
+        <!-- Services section -->
         <section class="services-section">
             <h2>Nuestros servicios</h2>
             <div class="circle-container">
@@ -77,23 +77,12 @@ onUnmounted(() => {
                 </div>
             </div>
         </section>
+        <!-- Trabajos destacados -->
 
-        <h1 class="text-3xl font-bold font-heading">Hello World!</h1>
-        <p>This is Ikigai Advertising</p>
-        <p class="text-lg p-6 font-body">This is a simple page</p>
-        <p class="text-lg p-6 font-body">Welcome to our advertising agency. We specialize in creating innovative marketing solutions that help businesses grow and succeed in the competitive market.</p>
-        <p class="text-lg p-6 font-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p class="text-lg p-6 font-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p class="text-lg p-6 font-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p class="text-lg p-6 font-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p class="text-lg p-6 font-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p class="text-lg p-6 font-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p class="text-lg p-6 font-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p class="text-lg p-6 font-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <!-- Logos -->
     </div>
 </template>
 <style scoped>
-
 /* About Ikigai Section */
 .photo-section {
     display: flex;
@@ -154,16 +143,9 @@ onUnmounted(() => {
 .services-section h2 {
     font-size: 2rem;
     font-weight: 700;
-    /* margin-bottom: 2rem; */
 }
 
 .circle-container {
-    /* display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem; */
-    /* display: flex;
-    justify-items: center;
-    align-items: center; */
     padding: 2rem 1rem;
     position: relative;
     width: 100%;
