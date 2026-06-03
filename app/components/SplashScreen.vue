@@ -131,10 +131,7 @@ onMounted(() => {
 
         // safety fallback in case GSAP event doesn't fire
         setTimeout(() => {
-          if (splash.value && getComputedStyle(splash.value).opacity === '0') {
-            splash.value.style.pointerEvents = 'none'
-            finish()
-          }
+          finish()
         }, 5000)
 
     }
