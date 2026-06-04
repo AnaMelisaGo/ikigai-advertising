@@ -11,9 +11,11 @@
                         <h3 class="font-bold mb-2">Quick Links</h3>
                         <ul>
                             <li><a href="/">Inicio</a></li>
-                            <li><a href="#">RSC</a></li>
-                            <li><a href="#">Portfolio</a></li>
+                            <li><NuxtLink to="#">RSC</NuxtLink></li>
+                            <li><NuxtLink to="#">Portfolio</NuxtLink></li>
                         </ul>
+                        
+                        
                     </div>
                     <div class="text-center md:text-left">
                         <h3 class="font-bold mb-2">Servicios</h3>
@@ -33,8 +35,8 @@
                     <div class="contacto text-center md:text-left">
                         <h3 class="font-bold mb-2">Empresa</h3>
                         <ul>
-                            <li><a href="/about">Quienes Somos</a></li>
-                            <li><a href="#">Contacto</a></li>
+                            <li><NuxtLink to="/about">QuienesSomos</NuxtLink></li>
+                            <li><NuxtLink to="/about">Contacto</NuxtLink></li>
                         </ul>
                     </div>
                     <div class="flex flex-col items-center">
