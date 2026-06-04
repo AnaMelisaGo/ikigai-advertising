@@ -3,6 +3,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Carousel from '~/components/Carousel.vue'
+import ReusablePreFooter from '~/components/ReusablePreFooter.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -122,6 +123,12 @@ onUnmounted(() => {
          </section>
         <!-- Logos -->
         <Logos />
+        <ReusablePreFooter
+            title="¿Listo para crear algo asombroso?"
+            caption="Haz que tus ideas se hagan realidad."
+            button-text="Empieza ahora"
+            button-link="#"
+        />
     </div>
 </template>
 <style scoped>
