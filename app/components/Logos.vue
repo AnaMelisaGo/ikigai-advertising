@@ -32,7 +32,7 @@ onMounted(() => {
     const width = track.value.scrollWidth / 2 // width of one set of logos
     tween = gsap.to(track.value, {
         x: -width,
-        duration: 41.5,
+        duration: 50.5,
         ease: 'none',
         repeat: -1,
         modifiers: {
@@ -48,7 +48,7 @@ onUnmounted(() => {
 </script>
 <template>
     <section>
-        <h2 class="mx-6">Nos conocen tambien ...</h2>
+        <h2 class="mx-20">Nos conocen también ...</h2>
         <div class="clients">
             <div ref="track" class="track">
                 <div v-for="(logo, i) in duplicatedLogos" :key="i" class="logo">
@@ -62,7 +62,7 @@ onUnmounted(() => {
 .clients {
     position: relative;
     overflow: hidden;
-    padding: 1rem 0 4rem;
+    margin: 3rem 0 8rem;
 
     /* important for 3D effects */
     perspective: 900px;

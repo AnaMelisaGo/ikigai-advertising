@@ -14,7 +14,7 @@
         <div class="title">
             <h1>The power of creation</h1>
             <p>Innovation, creativity, and transformation</p>
-            <button class="cta">Ver Portfolio</button>
+            <NuxtLink to="#" class="cta-btn">Empieza tu proyecto</NuxtLink>
         </div>
     </section>
 </template>
@@ -74,7 +74,7 @@
     font-size: clamp(1rem, 3vw, 1.5rem);
 }
 
-.cta {
+.cta-btn {
     background: rgb(39 39 39 / 22%);
     margin: 20px;
     padding: 10px 25px;
@@ -85,7 +85,7 @@
     animation: slide-down 1s ease-out 3s 1 normal forwards;
 }
 
-.cta:hover {
+.cta-btn:hover {
     box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.5);
     background: var(--color-accent);
     transform: scale(1.3);

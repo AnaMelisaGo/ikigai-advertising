@@ -2,14 +2,19 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Carousel from '~/components/Carousel.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const section = ref(null)
 const leftPhoto = ref(null)
 const rightPhoto = ref(null)
+const services = ref(null)
+const carousel = ref(null)
 
 let timeline
+let serviceTimeline
+let carouselTimeline
 
 onMounted(() => {
     timeline = gsap.timeline({
@@ -20,6 +25,23 @@ onMounted(() => {
             scrub: 1,
         }
     })
+    serviceTimeline = gsap.timeline({
+        scrollTrigger: {
+            trigger: services.value,
+            start: 'top 80%',
+            end: 'bottom center',
+            scrub: 1,
+        }
+    })
+    carouselTimeline = gsap.timeline({
+        scrollTrigger: {
+            trigger: carousel.value,
+            start: 'top 80%',
+            end: 'bottom center',
+            scrub: 1,
+        }
+    })
+
     timeline.fromTo(
         leftPhoto.value,
         { x: -100, y: -80, rotate: -8, opacity: 0 },
@@ -31,13 +53,30 @@ onMounted(() => {
         { x: 0, y: 0, rotate: 0, opacity: 1, ease: 'power3.out'},
         '<' // start at the same time as the previous animation
     )
+
+    serviceTimeline.fromTo(
+        services.value,
+        { y:-80, opacity: 0},
+        { y: 0, opacity: 1, ease: 'power3.out'}
+    )
+
+    carouselTimeline.fromTo(
+        carousel.value,
+        { y: -80, opacity: 0 },
+        { y: 0, opacity: 1, ease: 'power3.out'}
+    )
 })
 
 onUnmounted(() => {
-    timeline.scrollTrigger?.kill() // Clean up the ScrollTrigger
-    timeline.kill() // clean up the timeline
+    // Clean up the ScrollTrigger
+    timeline.scrollTrigger?.kill()
+    serviceTimeline.scrollTrigger?.kill()
+    carouselTimeline.scrollTrigger?.kill()
+    // clean up the timeline
+    timeline?.kill()
+    serviceTimeline?.kill()
+    carouselTimeline?.kill()
 })
-
 
 </script>
 
@@ -45,6 +84,7 @@ onUnmounted(() => {
     <div>
         <Hero />
         <!-- Brief about Ikigai -->
+        <h2 class="my-5 font-bold text-[2rem] text-center">Acerca de Ikigai</h2>
         <section ref="section" class="photo-section">
             <div class="photos-wrapper">
                 <div ref="leftPhoto" class="left-column">
@@ -59,9 +99,9 @@ onUnmounted(() => {
             </div>
         </section>
         <!-- Services section -->
-        <section class="services-section">
+        <section ref="services" class="services-section">
             <h2>Nuestros servicios</h2>
-            <div class="circle-container">
+            <div ref="servicesContainer" class="circle-container">
                 <div class="green circle">
                     <h3>Graphics</h3>
                 </div>
@@ -77,7 +117,9 @@ onUnmounted(() => {
             </div>
         </section>
         <!-- Trabajos destacados -->
-
+         <section ref="carousel">
+             <Carousel />
+         </section>
         <!-- Logos -->
         <Logos />
     </div>
@@ -89,7 +131,7 @@ onUnmounted(() => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem 1rem;
+    /* padding: 2rem 1rem; */
     margin: auto;
 }
 
