@@ -218,6 +218,7 @@ onUnmounted(() => {
 .circle:hover {
     transform: scale(1.2);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    z-index: 3;
 }
 
 .circle h3 {
