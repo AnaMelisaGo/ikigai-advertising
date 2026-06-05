@@ -12,10 +12,12 @@ const leftPhoto = ref(null)
 const rightPhoto = ref(null)
 const services = ref(null)
 const carousel = ref(null)
+const process = ref(null)
 
 let timeline
 let serviceTimeline
 let carouselTimeline
+let processTimeline
 
 onMounted(() => {
     timeline = gsap.timeline({
@@ -37,6 +39,14 @@ onMounted(() => {
     carouselTimeline = gsap.timeline({
         scrollTrigger: {
             trigger: carousel.value,
+            start: 'top 80%',
+            end: 'bottom center',
+            scrub: 1,
+        }
+    })
+    processTimeline = gsap.timeline({
+        scrollTrigger: {
+            trigger: process.value,
             start: 'top 80%',
             end: 'bottom center',
             scrub: 1,
@@ -66,6 +76,11 @@ onMounted(() => {
         { y: -80, opacity: 0 },
         { y: 0, opacity: 1, ease: 'power3.out'}
     )
+    processTimeline.fromTo(
+        process.value,
+        { y: -80, opacity: 0 },
+        { y: 0, opacity: 1, ease: 'power3.out'}
+    )
 })
 
 onUnmounted(() => {
@@ -85,7 +100,7 @@ onUnmounted(() => {
     <div>
         <Hero />
         <!-- Brief about Ikigai -->
-        <h2 class="my-5 font-bold text-[2rem] text-center">Acerca de Ikigai</h2>
+        <h2 class="my-5 font-bold text-[2rem] text-center">Significado de Ikigai</h2>
         <section ref="section" class="photo-section">
             <div class="photos-wrapper">
                 <div ref="leftPhoto" class="left-column">
@@ -98,6 +113,9 @@ onUnmounted(() => {
                     <img src="/images/ikigai-circle.png" alt="Círculo Ikigai" class="photo" />
                 </div>
             </div>
+        </section>
+        <section ref="process">
+            <Process />
         </section>
         <!-- Services section -->
         <section ref="services" class="services-section">
@@ -185,6 +203,7 @@ onUnmounted(() => {
 /* Services Section */
 
 .services-section {
+    margin-top: 5rem;
     padding: 1rem;
     text-align: center;
 }
