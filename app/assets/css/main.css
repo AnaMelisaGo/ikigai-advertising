@@ -18,6 +18,12 @@
     --color-secondary: #002E46;
 }
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
     font-family: var(--font-body);
     background-color: #fff;
@@ -28,4 +34,13 @@ body {
 
 h1, h2, h3, h4, h5 {
     font-family: var(--font-heading);
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }

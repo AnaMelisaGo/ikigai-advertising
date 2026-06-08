@@ -1,91 +1,102 @@
 <script setup>
 defineProps({
+    heroTag: {
+        type: String,
+        required:true,
+    },
     heroTitle: {
         type: String,
         required: true,
+    },
+    heroSpan: {
+        type: String,
+        default: null,
     },
     heroCaption: {
         type: String,
         required: true,
     },
-    buttonText: {
-        type: String,
-        default: null,
-    },
-    buttonLink: {
-        type: String,
-        default: null,
-    },
-    backgroundImage: {
-        type: String,
-        // default: '#fff',
-    }
+    // backgroundImage: {
+    //     type: String,
+    // }
 })
 </script>
 <template>
-    <div class="reusable-hero" :style="{backgroundImage: backgroundImage ? `linear-gradient(rgb(0 0 0 / 5%) 46%, rgba(0, 0, 0, 0.6) 100%), url(${backgroundImage})`: 'none'}">
-        <div class="hero-container">
-            <h1 class="title">
-                {{ heroTitle }}
-    
-            </h1>
-    
-            <p class="caption">
-                {{ heroCaption }}
-    
-            </p>
-            <NuxtLink v-if="buttonText && buttonLink" :to="buttonLink" class="hero-btn">{{ buttonText }}</NuxtLink>
-        </div>
+    <div class="reusable-hero">
+      <div class="hero-container">
+        <span class="hero-tag">
+          {{ heroTag }}
+        </span>
+
+        <h1 class="hero-title">
+          {{ heroTitle }}
+          <span>{{ heroSpan }}</span>
+        </h1>
+
+        <p class="hero-description">
+          {{ heroCaption }}
+        </p>
+      </div>
     </div>
+    <!-- <div class="reusable-hero" :style="{backgroundImage: backgroundImage ? `linear-gradient(rgb(0 0 0 / 5%) 46%, rgba(0, 0, 0, 0.6) 100%), url(${backgroundImage})`: 'none'}"> -->
 </template>
 <style scoped>
 .reusable-hero {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 85vh;
-    padding: 6rem 2rem;
+    padding: 140px 0 120px;
+    text-align: center;
+    background:
+    radial-gradient(circle at top,
+    rgba(230,230,230,.8),
+    transparent 50%);
 }
 
 .reusable-hero .hero-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    height: 100%;
-    color: white;
+    width: min(1200px, 90%);
+    margin: 0 auto;
 }
 
-.hero-container .title {
-    font-size: 4rem;
-    opacity: 0;
+.hero-tag{
+  display:inline-block;
+  padding:10px 18px;
+  border:1px solid #e5e7eb;
+  border-radius:999px;
+  font-size:.9rem;
+  margin-bottom:24px;
+  color: var(--color-accent);
+  opacity: 0;
 
+  animation: fadeIn 2s ease-out 1.5s 1 normal forwards;
+}
+
+.hero-container .hero-title {
+    font-size:clamp(3rem,8vw,6rem);
+    line-height:1;
+    font-weight:800;
+    letter-spacing:-3px;
+    max-width:900px;
+    margin:auto;
+
+    opacity: 0;
     animation: slideDown 1s ease-out forwards;
     transition: transform 1s ease-in-out;
 }
 
-.hero-container .caption {
+.hero-title span {
+  display:block;
+  color:#9f9f9f;
+}
+
+.hero-container .hero-description {
+    max-width:750px;
+    margin:40px auto 0;
+    font-size:1.2rem;
+    line-height:1.8;
+    color:#6b7280;
+
     opacity: 0;
     animation: slideDown 1s ease-in-out forwards;
     transition: transform 1s ease-in-out;
     animation-delay: .5s;
-}
-
-.hero-btn {
-    border: 1px solid white;
-    border-radius: 8px;
-    padding: 10px 20px;
-    margin: 20px;
-    opacity: 0;
-    transition: background .5s ease-in-out, transform 0.5s ease-in-out;
-    animation: fadeIn 1s ease-out 3s 1 normal forwards;
-    animation-delay: 2s;
-}
-
-.hero-btn:hover {
-    background: var(--color-accent);
-    transform: scale(1.1)
-
 }
 
 @keyframes slideDown {
