@@ -127,7 +127,7 @@
         width: 0;
     }
     to {
-        width: 31ch;
+        width: 27ch;
     }
 }
 
