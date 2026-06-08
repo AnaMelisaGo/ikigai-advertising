@@ -76,11 +76,15 @@ defineProps({
     border-radius: 8px;
     padding: 10px 20px;
     margin: 20px;
-    transition: background .8s ease-in-out;
+    opacity: 0;
+    transition: background .5s ease-in-out, transform 0.5s ease-in-out;
+    animation: fadeIn 1s ease-out 3s 1 normal forwards;
+    animation-delay: 2s;
 }
 
 .hero-btn:hover {
     background: var(--color-accent);
+    transform: scale(1.1)
 
 }
 
@@ -92,6 +96,15 @@ defineProps({
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }
 
