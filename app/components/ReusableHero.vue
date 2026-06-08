@@ -25,10 +25,10 @@ defineProps({
 <template>
     <div class="reusable-hero" :style="{backgroundImage: backgroundImage ? `linear-gradient(rgb(0 0 0 / 5%) 46%, rgba(0, 0, 0, 0.6) 100%), url(${backgroundImage})`: 'none'}">
         <div class="hero-container">
-            <h2 class="title">
+            <h1 class="title">
                 {{ heroTitle }}
     
-            </h2>
+            </h1>
     
             <p class="caption">
                 {{ heroCaption }}
@@ -69,6 +69,19 @@ defineProps({
     animation: slideDown 1s ease-in-out forwards;
     transition: transform 1s ease-in-out;
     animation-delay: .5s;
+}
+
+.hero-btn {
+    border: 1px solid white;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin: 20px;
+    transition: background .8s ease-in-out;
+}
+
+.hero-btn:hover {
+    background: var(--color-accent);
+
 }
 
 @keyframes slideDown {
