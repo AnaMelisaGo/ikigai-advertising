@@ -159,7 +159,7 @@ onBeforeUnmount(() => {
             <!-- Desktop Menu -->
             <div class="hidden sm:hidden items-center gap-8 md:flex md:gap-4">
                 <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="/"  @mouseenter="servicesOpen = false">Inicio</NuxtLink>
-                <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="/about" @mouseenter="servicesOpen = false">Quienes Somos</NuxtLink>
+                <!-- <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="/about" @mouseenter="servicesOpen = false">Quienes Somos</NuxtLink> -->
                 <div class="nav-link relative text-gray-700 cursor-pointer" @mouseenter="servicesOpen = true" ref="servicesMenuRef">
                     <div active-class="bg-accent text-white">
                         Servicios
@@ -186,8 +186,8 @@ onBeforeUnmount(() => {
                         </div>
                     </Transition>
                 </div>
-                <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="#"  @mouseenter="servicesOpen = false">RSC</NuxtLink>
                 <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="#" @mouseenter="servicesOpen = false">Portfolio</NuxtLink>
+                <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="#"  @mouseenter="servicesOpen = false">RSC</NuxtLink>
                 <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="#" @mouseenter="servicesOpen = false">Contacto</NuxtLink>
             </div>
 
@@ -219,8 +219,8 @@ onBeforeUnmount(() => {
                         <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="/" @click="closeMenu">Inicio</NuxtLink>
                         <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="/about" @click="closeMenu">Quienes Somos</NuxtLink>
                         <div class="mobile-link text-gray-300 cursor-pointer" active-class="bg-accent text-white" @click="openServicesMenu">Servicios</div>
-                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">RSC</NuxtLink>
                         <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">Portfolio</NuxtLink>
+                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">RSC</NuxtLink>
                         <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">Contacto</NuxtLink>
                     </div>
                     <div ref="servicesMobileMenu" class="absolute inset-0 flex flex-col py-8">
