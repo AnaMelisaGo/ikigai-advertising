@@ -170,7 +170,7 @@ onUnmounted(() => {
 
 .thumb {
     position: relative;
-    flex: 0 0 120px;
+    flex: 0 1 120px;
     height: 80px;
     cursor: pointer;
     border-radius: 8px;
@@ -210,6 +210,9 @@ onUnmounted(() => {
     .carousel-container {
         width: 80%;
         height: 70vh;
+    }
+    .thumb {
+        flex: 0 0 120px;
     }
 }
 </style>

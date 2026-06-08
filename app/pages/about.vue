@@ -1,4 +1,13 @@
 <template>
+    <section>
+        <ReusableHero
+        hero-title = "Title"
+        hero-caption = "caption"
+        background-image="/images/fundacion-astra-zeneca.png"
+        button-text="button hero"
+        button-link="#"
+        />
+    </section>
     <div>
         <h1 class="text-3xl font-bold font-heading">About Us</h1>
         <p>This is the about page for Ikigai Advertising.</p>
