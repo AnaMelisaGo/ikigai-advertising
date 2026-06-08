@@ -1,4 +1,5 @@
 <script setup>
+
 const processes = [
     {
         title: "Descubrimiento y Estrategia",
@@ -23,7 +24,7 @@ const processes = [
 ];
 </script>
 <template>
-    <div class="process-section">
+    <div ref="process" class="process-section">
         <div class="container">
             <div class="section-header">
                 <span class="eyebrow">Cómo trabajamos</span>
@@ -60,7 +61,8 @@ const processes = [
 </template>
 <style scoped>
 .process-section {
-  padding: 7rem 1.5rem;
+  
+  padding: 5rem 1.25rem;
   background: var(--light-gray);
   /* color: white; */
   overflow: hidden;
@@ -77,15 +79,6 @@ const processes = [
   margin: 0 auto 5rem;
 }
 
-.eyebrow {
-  display: inline-block;
-  margin-bottom: 1rem;
-  color: var(--color-accent);
-  font-size: 0.85rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
 .section-header h2 {
   font-size: clamp(2.5rem, 5vw, 4rem);
   margin-bottom: 1rem;
@@ -100,7 +93,7 @@ const processes = [
 
 .process-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: 1.5rem;
 }
 
@@ -114,10 +107,10 @@ const processes = [
     /* border: 1px solid rgba(255,255,255,0.08); */
     /* backdrop-filter: blur(12px); */
 
-    opacity: 0;
+    /* opacity: 0; */
     /* transform: translateY(40px); */
 
-    animation: fadeUp 0.8s ease forwards;
+    /* animation: fadeUp 0.8s ease forwards; */
 
     transition:
         transform 0.4s ease,
@@ -164,31 +157,13 @@ const processes = [
   width: 100px;
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 1024px) {
+@media (min-width: 768px) {
   .process-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .process-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .process-section {
-    padding: 5rem 1.25rem;
+    padding: 7rem 1.5rem;
   }
 }
 </style>

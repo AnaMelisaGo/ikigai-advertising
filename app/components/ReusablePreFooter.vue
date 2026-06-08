@@ -45,13 +45,13 @@ defineProps({
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5rem 0;
+    padding: 5rem 1rem;
+    text-align: center;
 }
 .prefoot-title {
     font-size: 2rem;
     font-weight: 700;
     margin: 1rem;
-    text-align: center;
 }
 .prefoot-caption {
     font-style: italic;

@@ -47,8 +47,9 @@ onUnmounted(() => {
 
 </script>
 <template>
-    <section>
-        <h2 class="mx-20">Nos conocen también ...</h2>
+    <section class="clients-container">
+        <span class="eyebrow">Nos conocen también ...</span>
+        <!-- <h2 class="m-10">Nos conocen también ...</h2> -->
         <div class="clients">
             <div ref="track" class="track">
                 <div v-for="(logo, i) in duplicatedLogos" :key="i" class="logo">
@@ -59,10 +60,18 @@ onUnmounted(() => {
     </section>
 </template>
 <style scoped>
+.clients-container {
+    padding: 0 0 8rem;
+}
+
+.clients-container span {
+    margin-left: 2rem;
+}
+
 .clients {
     position: relative;
     overflow: hidden;
-    margin: 3rem 0 8rem;
+    /* margin: 3rem 0 8rem; */
 
     /* important for 3D effects */
     perspective: 900px;

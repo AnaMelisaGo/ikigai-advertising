@@ -36,7 +36,7 @@
                         <h3 class="font-bold mb-2">Empresa</h3>
                         <ul>
                             <li><NuxtLink to="/about">Quienes Somos</NuxtLink></li>
-                            <li><NuxtLink to="/about">Contacto</NuxtLink></li>
+                            <li><NuxtLink to="#">Contacto</NuxtLink></li>
                         </ul>
                     </div>
                     <div class="flex flex-col items-center">

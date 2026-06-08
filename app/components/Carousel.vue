@@ -63,39 +63,54 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <h2 class="mt-6 font-bold text-[2rem] text-center">Trabajos destacados</h2>
-    <div class="carousel" @mouseenter="stopAutoplay" @mouseleave="startAutoplay">
-
-        <!-- MAIN VIEW -->
-        <div class="carousel-container" @touchstart="onTouchStart" @touchend="onTouchEnd">
-            <img :src="currentWork.image" :alt="currentWork.title" />
-
-            <!-- hover overlay -->
-            <div class="overlay">
-                <h2>{{ currentWork.title }}</h2>
+    <div class="carousel-section">
+        <span class="eyebrow">Galería</span>
+        <h2>Trabajos destacados</h2>
+        <div class="carousel" @mouseenter="stopAutoplay" @mouseleave="startAutoplay">
+    
+            <!-- MAIN VIEW -->
+            <div class="carousel-container" @touchstart="onTouchStart" @touchend="onTouchEnd">
+                <img :src="currentWork.image" :alt="currentWork.title" />
+    
+                <!-- hover overlay -->
+                <div class="overlay">
+                    <h2>{{ currentWork.title }}</h2>
+                </div>
+                <!-- Buttons -->
+                <button class="prev" @click="prev">&#10094;</button>
+                <button class="next" @click="next">&#10095;</button>
             </div>
-            <!-- Buttons -->
-            <button class="prev" @click="prev">&#10094;</button>
-            <button class="next" @click="next">&#10095;</button>
-        </div>
-
-        <!-- THUMBNAILS -->
-        <div class="thumbnails">
-            <div
-                v-for="(work, index) in works"
-                :key="work.id"
-                class="thumb"
-                :class="{ active: index === current }"
-                @click="goTo(index)"
-            >
-                <img :src="work.image" :alt="work.title" />
-                <div class="thumb-overlay"></div>
+    
+            <!-- THUMBNAILS -->
+            <div class="thumbnails">
+                <div
+                    v-for="(work, index) in works"
+                    :key="work.id"
+                    class="thumb"
+                    :class="{ active: index === current }"
+                    @click="goTo(index)"
+                >
+                    <img :src="work.image" :alt="work.title" />
+                    <div class="thumb-overlay"></div>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <style scoped>
+.carousel-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 1rem 2rem;
+}
+
+.carousel-section {
+    font-size: 2rem;
+    font-weight: 700;
+}
 .carousel {
     width: 100%;
     display: flex;
