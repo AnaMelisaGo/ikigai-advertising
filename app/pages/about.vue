@@ -4,6 +4,8 @@
         hero-title = "Title"
         hero-caption = "caption"
         background-image="/images/fundacion-astra-zeneca.png"
+        button-text="button hero"
+        button-link="#"
         />
     </section>
     <div>

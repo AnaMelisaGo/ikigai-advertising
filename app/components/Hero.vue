@@ -12,8 +12,8 @@
         </video>
         <div class="overlay"></div>
         <div class="title">
-            <h1>The power of creation</h1>
-            <p>Innovation, creativity, and transformation</p>
+            <h1>El poder de crear</h1>
+            <p>Innovación, estrategia y creatividad</p>
             <NuxtLink to="#" class="cta-btn">Empieza tu proyecto</NuxtLink>
         </div>
     </section>
@@ -94,11 +94,11 @@
 
 @keyframes slide-down {
     from {
-        margin-top: 100px;
+        margin-bottom: 100px;
         opacity: 0;
     }
     to {
-        margin-top: 20px;
+        margin-bottom: 20px;
         opacity: 1;
     }
 }
