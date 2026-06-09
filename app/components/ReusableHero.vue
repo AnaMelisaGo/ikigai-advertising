@@ -16,13 +16,17 @@ defineProps({
         type: String,
         required: true,
     },
+    background: {
+        type: String,
+        defafult: 'radial-gradient(circle at top, rgba(230,230,230,.8), transparent 50%)',
+    }
     // backgroundImage: {
     //     type: String,
     // }
 })
 </script>
 <template>
-    <div class="reusable-hero">
+    <div class="reusable-hero" :style="{ background:background }">
       <div class="hero-container">
         <span class="hero-tag">
           {{ heroTag }}
@@ -44,10 +48,11 @@ defineProps({
 .reusable-hero {
     padding: 140px 0 120px;
     text-align: center;
-    background:
+    /* background:
     radial-gradient(circle at top,
     rgba(230,230,230,.8),
-    transparent 50%);
+    transparent 50%); */
+    /* background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%); */
 }
 
 .reusable-hero .hero-container {
