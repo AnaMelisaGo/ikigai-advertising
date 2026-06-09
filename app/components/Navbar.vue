@@ -152,8 +152,8 @@ onBeforeUnmount(() => {
         <nav ref="navbar" class="navbar backdrop-blur-sm shadow-lg">
             <div class="logo">
                 <NuxtLink class="text-xl font-bold flex items-center" to="/">
-                    <NuxtImg src="/images/logo.png" alt="Logo" class="me-2 w-12"/>
-                    <NuxtImg src="/images/logo-name.png" alt="Logo Text" class="h-10 md:h-10"/>
+                    <img src="/images/logo.png" alt="Logo" class="me-2 w-12"/>
+                    <img src="/images/logo-name.png" alt="Logo Text" class="h-10 md:h-10"/>
                 </NuxtLink>
             </div>
             <!-- Desktop Menu -->
@@ -187,7 +187,7 @@ onBeforeUnmount(() => {
                     </Transition>
                 </div>
                 <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="#" @mouseenter="servicesOpen = false">Portfolio</NuxtLink>
-                <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="#"  @mouseenter="servicesOpen = false">RSC</NuxtLink>
+                <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="/responsabilidad-social"  @mouseenter="servicesOpen = false">RSC</NuxtLink>
                 <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="/contacto" @mouseenter="servicesOpen = false">Contacto</NuxtLink>
             </div>
 
@@ -220,7 +220,7 @@ onBeforeUnmount(() => {
                         <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="/about" @click="closeMenu">Quienes Somos</NuxtLink>
                         <div class="mobile-link text-gray-300 cursor-pointer" active-class="bg-accent text-white" @click="openServicesMenu">Servicios</div>
                         <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">Portfolio</NuxtLink>
-                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">RSC</NuxtLink>
+                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="/responsabilidad-social" @click="closeMenu">RSC</NuxtLink>
                         <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="/contacto" @click="closeMenu">Contacto</NuxtLink>
                     </div>
                     <div ref="servicesMobileMenu" class="absolute inset-0 flex flex-col py-8">

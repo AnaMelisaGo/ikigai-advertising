@@ -6,10 +6,6 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
 
-  image: {
-    provider: 'static'
-  },
-
   ssr: true,
   nitro: {
     prerender: {
