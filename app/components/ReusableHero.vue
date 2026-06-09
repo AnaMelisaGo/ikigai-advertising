@@ -94,7 +94,7 @@ defineProps({
 .hero-container .hero-description {
     max-width:750px;
     margin:40px auto 0;
-    font-size:1.2rem;
+    font-size: clamp(0.5rem, 4vw, 1.2rem);
     line-height:1.8;
     color:#6b7280;
 
