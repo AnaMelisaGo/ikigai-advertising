@@ -152,8 +152,8 @@ onBeforeUnmount(() => {
         <nav ref="navbar" class="navbar backdrop-blur-sm shadow-lg">
             <div class="logo">
                 <NuxtLink class="text-xl font-bold flex items-center" to="/">
-                    <NuxtImg src="/logo.png" alt="Logo" class="me-2 w-12"/>
-                    <NuxtImg src="/logo-name.png" alt="Logo Text" class="h-10 md:h-10"/>
+                    <NuxtImg src="/images/logo.png" alt="Logo" class="me-2 w-12"/>
+                    <NuxtImg src="/images/logo-name.png" alt="Logo Text" class="h-10 md:h-10"/>
                 </NuxtLink>
             </div>
             <!-- Desktop Menu -->

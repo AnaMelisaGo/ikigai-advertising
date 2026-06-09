@@ -2,8 +2,8 @@
     <footer class="footer">
         <div class="footer-top md:mb-10">
             <div class="footer-logo-container">
-                <img src="/logo.png" alt="Ikigai Advertising Logo" class="w-16 h-16" />
-                <img src="/logo-name-light.png" alt="Ikigai Advertising Name" class="w-32" />
+                <img src="/images/logo.png" alt="Ikigai Advertising Logo" class="w-16 h-16" />
+                <img src="/images/logo-name-light.png" alt="Ikigai Advertising Name" class="w-32" />
             </div>
             <div class="footer-links">
                 <div class="links-top">
