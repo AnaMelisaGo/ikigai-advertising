@@ -3,6 +3,7 @@
         <Navbar />
         <main>
             <slot />
+            <WhatsApp />
         </main>
         <Footer />
     </div>

@@ -23,4 +23,11 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/fonts',
   ],
+
+  runtimeConfig: {
+    public: {
+      whatsappNumber: '',
+    }
+  },
+  
 })
