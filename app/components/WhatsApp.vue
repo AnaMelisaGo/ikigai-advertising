@@ -36,7 +36,7 @@ onUnmounted(() => {
         </transition>
 
     <!-- floating button -->
-        <button class="whatsapp-btn" @click="openWhatsApp">
+        <button class="whatsapp-btn" @click="openWhatsApp" @mouseenter="start">
             <img src="/images/whatsapp.svg" alt="WhatsApp" />
         </button>
     </div>

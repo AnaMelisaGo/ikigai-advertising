@@ -103,15 +103,6 @@ const processes = [
     border-radius: 24px;
     
     background: var(--color-gray-200);
-    /* background: rgba(255,255,255,0.04); */
-    /* border: 1px solid rgba(255,255,255,0.08); */
-    /* backdrop-filter: blur(12px); */
-
-    /* opacity: 0; */
-    /* transform: translateY(40px); */
-
-    /* animation: fadeUp 0.8s ease forwards; */
-
     transition:
         transform 0.4s ease,
         border-color 0.4s ease,
@@ -157,7 +148,13 @@ const processes = [
   width: 100px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 990px) {
+    .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 990px) {
   .process-grid {
     grid-template-columns: repeat(4, 1fr);
   }

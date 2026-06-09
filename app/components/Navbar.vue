@@ -188,7 +188,7 @@ onBeforeUnmount(() => {
                 </div>
                 <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="#" @mouseenter="servicesOpen = false">Portfolio</NuxtLink>
                 <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="#"  @mouseenter="servicesOpen = false">RSC</NuxtLink>
-                <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="#" @mouseenter="servicesOpen = false">Contacto</NuxtLink>
+                <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="/contacto" @mouseenter="servicesOpen = false">Contacto</NuxtLink>
             </div>
 
             <!-- Mobile Menu -->
@@ -221,7 +221,7 @@ onBeforeUnmount(() => {
                         <div class="mobile-link text-gray-300 cursor-pointer" active-class="bg-accent text-white" @click="openServicesMenu">Servicios</div>
                         <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">Portfolio</NuxtLink>
                         <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">RSC</NuxtLink>
-                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">Contacto</NuxtLink>
+                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="/contacto" @click="closeMenu">Contacto</NuxtLink>
                     </div>
                     <div ref="servicesMobileMenu" class="absolute inset-0 flex flex-col py-8">
                         <button type="button" class="back-btn text-left font-semibold text-gray-400 ps-4 cursor-pointer" @click="backToMainMenu">

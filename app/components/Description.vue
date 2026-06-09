@@ -132,7 +132,6 @@ onUnmounted(() => {
     justify-content: center;
     align-items: center;
     padding: 5rem 1rem;
-    /* margin: auto; */
 }
 
 .photos-wrapper {
@@ -144,14 +143,15 @@ onUnmounted(() => {
     max-width: 1200px;
 }
 
-.left-column, .right-column {
+.left-column,
+.right-column {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 1rem;
-    width: 26rem;
+    width: 100%;
 }
 
 .photo {
@@ -180,5 +180,10 @@ onUnmounted(() => {
         flex-direction: row;
         gap: clamp(2rem, 2vw, 4rem);
     }
+
+    .left-column,
+    .right-column {
+    width: 50%;
+}
 }
 </style>

@@ -5,7 +5,7 @@ export const useWhatsAppMessage = () => {
     "/": "¡Hola! Vi su página web y me gustaría obtener más información.",
     "/services": "¡Hola! Estoy interesado/a en sus servicios. ¿Pueden ayudarme?",
     "/portfolio": "¡Hola! Me gustaría hablar sobre un proyecto que vi en su portafolio.",
-    "/contact": "¡Hola! Necesito información sobre precios y disponibilidad."
+    "/contacto": "¡Hola! Necesito información sobre precios y disponibilidad."
   }
 
   const defaultMessage = "Hello! I need information..."

@@ -32,7 +32,7 @@ onMounted(() => {
     const width = track.value.scrollWidth / 2 // width of one set of logos
     tween = gsap.to(track.value, {
         x: -width,
-        duration: 30.5,
+        duration: 50.5,
         ease: 'none',
         repeat: -1,
         modifiers: {

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 </script>
 
 <template>
-  <div class="bg-white text-gray-900 overflow-hidden">
+  <div class="overflow-hidden">
 
     <!-- Hero -->
     <section>
@@ -15,7 +15,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
         hero-caption="Creemos que toda marca tiene un propósito. Nuestra misión es ayudarte
               a descubrirlo, potenciarlo y comunicarlo de forma auténtica,
               estratégica y visualmente impactante."
-    
         />
     </section>
 
@@ -173,52 +172,10 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 </template>
 
 <style scoped>
-
 .section-container{
   width: min(1200px, 90%);
   margin: 0 auto;
 }
-
-/* .hero-section{
-  padding: 140px 0 120px;
-  text-align: center;
-  background:
-    radial-gradient(circle at top,
-    rgba(230,230,230,.8),
-    transparent 50%);
-}
-
-.hero-tag{
-  display:inline-block;
-  padding:10px 18px;
-  border:1px solid #e5e7eb;
-  border-radius:999px;
-  font-size:.9rem;
-  margin-bottom:24px;
-  color:#6b7280;
-}
-
-.hero-title{
-  font-size:clamp(3rem,8vw,6rem);
-  line-height:1;
-  font-weight:800;
-  letter-spacing:-3px;
-  max-width:900px;
-  margin:auto;
-}
-
-.hero-title span{
-  display:block;
-  color:#9f9f9f;
-}
-
-.hero-description{
-  max-width:750px;
-  margin:40px auto 0;
-  font-size:1.2rem;
-  line-height:1.8;
-  color:#6b7280;
-} */
 
 .section{
   padding:120px 0;
