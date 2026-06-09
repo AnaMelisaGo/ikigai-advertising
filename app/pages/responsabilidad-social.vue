@@ -9,11 +9,6 @@ const pillars = ref(null)
 
 onMounted(() => {
 
-
-  /* =========================
-     REVEAL SECTIONS
-  ========================== */
-
   gsap.utils.toArray(".reveal").forEach((el) => {
     gsap.from(el, {
       opacity: 0,
