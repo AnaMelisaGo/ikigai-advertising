@@ -20,16 +20,16 @@
                     <div class="text-center md:text-left">
                         <h3 class="font-bold mb-2">Servicios</h3>
                         <ul>
-                            <li><a href="/servicios/graphics">Graphics</a></li>
-                            <li><a href="/servicios/events">Events</a></li>
-                            <li><a href="/servicios/digital">Digital</a></li>
+                            <li><NuxtLink to="/servicios/graphics">Graphics</NuxtLink></li>
+                            <li><NuxtLink to="/servicios/events">Events</NuxtLink></li>
+                            <li><NuxtLink to="/servicios/digital">Digital</NuxtLink></li>
                         </ul>
                     </div>
                     <div class="text-center md:text-left">
                         <h3 class="font-bold mb-2">Own Brands</h3>
                         <ul>
-                            <li><a href="#">Vibe Music Wear</a></li>
-                            <li><a href="#">Tiento Fest</a></li>
+                            <li><NuxtLink to="/servicios/own-brands/vibe-music-wear">Vibe Music Wear</NuxtLink></li>
+                            <li><NuxtLink to="/servicios/own-brands/tiento-fest">Tiento Fest</NuxtLink></li>
                         </ul>
                     </div>
                     <div class="contacto text-center md:text-left">
@@ -44,9 +44,6 @@
                         <NuxtLink to="https://www.instagram.com/" target="_blank" class="social-icon">
                             <FontAwesomeIcon :icon="['fab', 'instagram']" />
                         </NuxtLink>
-
-                        <div class="social-icons">
-                        </div>
                     </div>
                 </div>
             </div>

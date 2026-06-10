@@ -158,10 +158,10 @@ onBeforeUnmount(() => {
                                 Own Brands
                                 <Transition name="subdropdown">
                                     <div class="sub-dropdown-menu shadow-lg" v-show="ownBrandsOpen" @mouseenter="ownBrandsOpen = true" @mouseleave="ownBrandsOpen = false">
-                                        <NuxtLink class="block px-4 py-2 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="bg-accent text-white" to="#">
+                                        <NuxtLink class="block px-4 py-2 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="bg-accent text-white" to="/servicios/own-brands/vibe-music-wear" @click="servicesOpen = false">
                                             Vibe Music Wear
                                         </NuxtLink>
-                                        <NuxtLink class="block px-4 py-2 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="bg-accent text-white" to="#">
+                                        <NuxtLink class="block px-4 py-2 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="bg-accent text-white" to="/servicios/own-brands/tiento-fest" @click="servicesOpen = false">
                                             Tiento Fest
                                         </NuxtLink>
                                     </div>
@@ -214,8 +214,8 @@ onBeforeUnmount(() => {
                         <NuxtLink v-for="service in services" :key="service.name" class="mobile-link text-gray-300" active-class="bg-accent text-white" :to="service.link" @click="closeMenu" @mouseenter="ownBrandsshow = false">{{  service.name }}</NuxtLink>
                         <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu" @mouseenter="ownBrandsshow = true">Own Brands</NuxtLink>
                         <div v-show="ownBrandsshow" class="flex flex-col ms-12">
-                            <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">Vibe Music Wear</NuxtLink>
-                            <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">Tiento Fest</NuxtLink>
+                            <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="/servicios/own-brands/vibe-music-wear" @click="closeMenu">Vibe Music Wear</NuxtLink>
+                            <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="/servicios/own-brands/tiento-fest" @click="closeMenu">Tiento Fest</NuxtLink>
                         </div>
                     </div>
                 </aside>
