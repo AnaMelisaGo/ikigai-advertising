@@ -24,22 +24,6 @@ let navbarTimeline
 
 let lastscrollY = 0
 
-
-// const buildServicesTimeline = () => {
-//     servicesTimeline?.kill() // Kill existing timeline if it exists
-//     gsap.set(mainMobileMenu.value, {
-//         xPercent: 0
-//     })
-
-//     gsap.set(servicesMobileMenu.value, {
-//         xPercent: 100
-//     })
-//     // Initialize GSAP timeline for services submenu
-//     servicesTimeline = gsap.timeline({ paused: true, defaults: {duration: 0.35, ease: 'power3.inOut'} })
-//     servicesTimeline.to(mainMobileMenu.value, { xPercent: -100 }).to(servicesMobileMenu.value, { xPercent: 0 }, 0)
-// }
-
-// open and close mobile menu
 const openMobile = () => {
     mobileOpen.value = true
     burgerTimeline.play()
@@ -62,9 +46,9 @@ const backToMainMenu = () => {
 
 // services data except Own Brands
 const services = [
-    { name: 'Graphics', link: '#' },
-    { name: 'Events', link: '#' },
-    { name: 'Digital', link: '#' },
+    { name: 'Graphics', link: '/servicios/graphics' },
+    { name: 'Events', link: '/servicios/events' },
+    { name: 'Digital', link: '/servicios/digital' },
 ]
 
 const toggleMenu = () => {
@@ -227,7 +211,7 @@ onBeforeUnmount(() => {
                         <button type="button" class="back-btn text-left font-semibold text-gray-400 ps-4 cursor-pointer" @click="backToMainMenu">
                             <FontAwesomeIcon icon="fa-solid fa-circle-chevron-left" class="back-icon" /> Back
                         </button>
-                        <NuxtLink v-for="service in services" :key="service.name" class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu" @mouseenter="ownBrandsshow = false">{{  service.name }}</NuxtLink>
+                        <NuxtLink v-for="service in services" :key="service.name" class="mobile-link text-gray-300" active-class="bg-accent text-white" :to="service.link" @click="closeMenu" @mouseenter="ownBrandsshow = false">{{  service.name }}</NuxtLink>
                         <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu" @mouseenter="ownBrandsshow = true">Own Brands</NuxtLink>
                         <div v-show="ownBrandsshow" class="flex flex-col ms-12">
                             <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">Vibe Music Wear</NuxtLink>

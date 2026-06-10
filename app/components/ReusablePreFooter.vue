@@ -4,6 +4,10 @@ defineProps({
         type: String,
         required: true,
     },
+    span: {
+        type: String,
+        default: '',
+    },
     caption: {
         type: String,
         default: '',
@@ -21,6 +25,7 @@ defineProps({
 <template>
     <section class="prefoot-container">
         <div class="prefoot-content">
+            <span>{{ span }}</span>
             <h2 class="prefoot-title">
                 {{ title }}
             </h2>
@@ -48,6 +53,12 @@ defineProps({
     padding: 5rem 1rem;
     text-align: center;
 }
+
+.prefoot-content span {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
 .prefoot-title {
     font-size: 2rem;
     font-weight: 700;
@@ -58,7 +69,7 @@ defineProps({
 }
 .prefoot-ctaBtn {
     background: var(--color-primary);
-    border-radius: 10px;
+    border-radius: 999px;
     margin: 2rem;
     padding: 1rem 5rem;
     color: white;
