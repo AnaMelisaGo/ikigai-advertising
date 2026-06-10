@@ -272,7 +272,7 @@ button-link="/contacto"
 }
 
 .gallery-item:hover img {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 /* ---------- Responsive ---------- */
@@ -296,7 +296,7 @@ button-link="/contacto"
     grid-template-columns: 1fr;
   }
 
-  section {
+  .section {
     padding: 5rem 0;
   }
 
