@@ -20,9 +20,9 @@
                     <div class="text-center md:text-left">
                         <h3 class="font-bold mb-2">Servicios</h3>
                         <ul>
-                            <li><a href="#">Graphics</a></li>
-                            <li><a href="#">Events</a></li>
-                            <li><a href="#">Design</a></li>
+                            <li><a href="/servicios/graphics">Graphics</a></li>
+                            <li><a href="/servicios/events">Events</a></li>
+                            <li><a href="/servicios/digital">Digital</a></li>
                         </ul>
                     </div>
                     <div class="text-center md:text-left">
