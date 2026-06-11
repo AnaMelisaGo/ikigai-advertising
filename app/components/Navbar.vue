@@ -137,7 +137,7 @@ onBeforeUnmount(() => {
         <nav ref="navbar" class="navbar backdrop-blur-sm shadow-lg">
             <div class="logo">
                 <NuxtLink class="text-xl font-bold flex items-center" to="/">
-                    <img src="/images/logo.png" alt="Logo" class="me-2 w-12"/>
+                    <img src="/images/logo.png" alt="Logo" class="me-2 w-12 circle"/>
                     <img src="/images/logo-name.png" alt="Logo Text" class="h-10 md:h-10"/>
                 </NuxtLink>
             </div>
@@ -245,6 +245,11 @@ onBeforeUnmount(() => {
         justify-content: space-between;
         /* padding: 1rem 0; */
     }
+
+    .logo:hover .circle{
+        animation: rotation 3s linear forwards;
+    }
+
     .nav-link {
         position: relative;
         padding: 6px 10px;
@@ -384,6 +389,15 @@ onBeforeUnmount(() => {
     .subdropdown-enter-from, .subdropdown-leave-to {
         opacity: 0;
         transform: translateX(-10px);
+    }
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
     }
 
 </style>

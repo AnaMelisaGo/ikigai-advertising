@@ -1,6 +1,7 @@
 <script setup>
 import {  onMounted, onUnmounted } from 'vue'
 import { useWhatsAppMessage } from '~/composables/useWhatsAppMessage'
+import gsap from 'gsap'
 
 const config = useRuntimeConfig()
 const phone = config.public.whatsappNumber
@@ -9,7 +10,6 @@ const { showPopup, start, close, cleanup } = usePopupTimer(
   10, // repeat every 10min
   6   // visible for 6s
 )
-
 const { message } = useWhatsAppMessage()
 
 const openWhatsApp = () => {
@@ -17,8 +17,23 @@ const openWhatsApp = () => {
     window.open(url, '_blank')
     }
 
-onMounted(() => {
-  start()
+onMounted(async () => {
+    const gsap = (await import('gsap')).default
+    start()
+    gsap.fromTo('.whatsapp-wrapper',
+    {
+        opacity: 0,
+        x: 60,
+    },
+    {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        delay: 3, // wait 2 seconds before starting
+        ease: 'power2.out',
+
+        clearProps: 'transform',
+    })
 })
 
 onUnmounted(() => {
@@ -65,11 +80,6 @@ onUnmounted(() => {
   animation: bounce 2.5s infinite;
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
 .popup {
     position: absolute;
     bottom: 65px;
@@ -89,5 +99,10 @@ onUnmounted(() => {
 }
 .fade-enter-from, .fade-leave-to {
     opacity: 0;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 </style>
