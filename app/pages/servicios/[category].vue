@@ -1,14 +1,22 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
-import { useRoute, navigateTo } from 'nuxt/app'
+import { useRoute } from 'nuxt/app'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const route = useRoute()
-const category = computed(() => route.params.category as string)
 
+// const category = computed(() => route.params.category as string)
+// const category = route.params.category as string
+const VALID = ['graphics', 'events', 'digital']
+
+definePageMeta({
+  validate: (route) => VALID.includes(route.params.category as string)
+})
+
+const route = useRoute()
+const pageData = computed(() => contentMap[route.params.category as string])
 /**
  * CENTRAL CONTENT DATABASE (your CMS-like layer)
  */
@@ -154,13 +162,18 @@ const contentMap: Record<string, any> = {
   }
 }
 
-const page = computed(() => contentMap[category.value])
+// const pageData = computed(() => contentMap[category.value])
+// const pageData = contentMap[category]
 
 /**
  * Redirect if invalid route
  */
-if (!page.value) {
-  await navigateTo('/')
+
+if (!pageData) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Página no encontrada',
+  })
 }
 
 onMounted(() => {
@@ -195,13 +208,13 @@ onMounted(() => {
 <section class="hero">
     <div class="hero-content">
         <span class="tag">
-            {{ page.tag }}
+            {{ pageData.tag }}
         </span>
         <h1>
-            {{ page.title }}
+            {{ pageData.title }}
         </h1>
         <p>
-            {{ page.description }}
+            {{ pageData.description }}
         </p>
     </div>
     <div class="glow"></div>
@@ -210,7 +223,7 @@ onMounted(() => {
 <!-- GRID -->
 <section class="grid">
     <div
-        v-for="block in page.items"
+        v-for="block in pageData.items"
         :key="block.title"
         class="card"
     >
@@ -233,9 +246,9 @@ onMounted(() => {
 </section>
 <ReusablePreFooter
 
-:span=page.prefooter.span
-:title=page.prefooter.title
-:caption=page.prefooter.caption
+:span=pageData.prefooter.span
+:title=pageData.prefooter.title
+:caption=pageData.prefooter.caption
 button-text="Solicita presupuesto"
 button-link="/contacto"
 />
