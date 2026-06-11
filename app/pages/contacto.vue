@@ -30,8 +30,8 @@ const openWa = () => {
             <div
                 class="bg-white border border-gray-100 rounded-3xl p-10 shadow-sm"
             >
-                <h2 class="text-2xl font-bold mb-8 title">
-                Información del contacto
+                <h2 class="text-2xl font-bold mb-8">
+                Información de contacto
                 </h2>
 
                 <div class="space-y-8">
@@ -81,12 +81,20 @@ const openWa = () => {
                     <div class="flex gap-4">
                     <!-- Instagram -->
                     <NuxtLink to="https://www.instagram.com/" target="_blank" aria-label="Instagram"
-                        class="contact-icon hover:border-black hover:-translate-y-1 transition-all duration-300">
-                        <FontAwesomeIcon :icon="['fab', 'instagram']" />
+                        class="btn-186">
+                        <span class="btn-icon">
+                            <FontAwesomeIcon :icon="['fab', 'instagram']" class="fa-inst" />
+                            <span class="btn-front-text">Follow</span>
+                            <span class="btn-back-text ins">Ikigai Advertising</span>
+                        </span>
                     </NuxtLink>
                     <!-- WhatsApp -->
-                    <button class="contact-icon" @click="openWa">
-                        <FontAwesomeIcon :icon="['fab','whatsapp']" />
+                    <button class="btn-186" @click="openWa">
+                        <span class="btn-icon">
+                            <FontAwesomeIcon :icon="['fab','whatsapp']" class="fa-inst" />
+                            <span class="was-front-text">Mensaje</span>
+                            <span class="btn-back-text was">WhatsApp</span>
+                        </span>
                     </button>
                     </div>
                 </div>
@@ -126,7 +134,96 @@ const openWa = () => {
     transform: scale(1.3);
 }
 
-.title {
+h3 {
     color: var(--color-accent);
 }
+
+.btn-186 {
+    --width: 155px;
+    --height: 50px;
+    --border_radius: 30px;
+        position: relative;
+    width: var(--width);
+    height: var(--height);
+    padding: 0;
+    border-radius: var(--border_radius);
+    border: 1px solid var(--color-accent);
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    user-select: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.btn-186 .btn-icon {
+    position: absolute;
+    top: 0;
+    left: 9px;
+    transition: all 0.5s;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.btn-186 .btn-icon .fa-inst {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    color: var(--color-accent)
+}
+
+.btn-186 .btn-front-text {
+    margin-left: 20px;
+}
+
+.btn-186 .was-front-text {
+    margin-left: 15px;
+}
+
+
+.btn-186 .btn-back-text {
+    position: absolute;
+    top: 0;
+    left: calc(var(--width) * -1);
+    font-weight: 700;
+    color: white;
+    background: var(--color-accent);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s;
+}
+
+.ins {
+    font-size: 12px;
+}
+
+.was {
+    font-size: 13px
+}
+
+.btn-186:hover .btn-icon {
+    left: 100%;
+    transform: translate(-35%, 0%);
+}
+
+.btn-186:hover .btn-back-text {
+    left: 10%;
+    transform: translate(-110%, 0%);
+}
+
+.btn-186:active {
+    transform: scale(1.03);
+}
+
 </style>

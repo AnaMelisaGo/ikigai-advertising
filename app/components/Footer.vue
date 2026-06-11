@@ -54,9 +54,9 @@
                 &copy; {{ new Date().getFullYear() }} Ikigai Advertising. All rights reserved.
             </p>
             <ul class="politica">
-                <li><a href="#">Avisos Legales</a></li>
-                <li><a href="#">Política de Privacidad</a></li>
-                <li><a href="#">Política de Cookies</a></li>
+                <li><NuxtLink to="/legal">Avisos Legales</NuxtLink></li>
+                <li><NuxtLink to="/politica-privacidad">Política de Privacidad</NuxtLink></li>
+                <li><NuxtLink to="/politica-cookies">Política de Cookies</NuxtLink></li>
             </ul>
         </div>
     </footer>
