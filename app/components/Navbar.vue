@@ -69,6 +69,7 @@ const closeServicesOnClickOutside = (event) => {
 const handleResize = () => {
     if (window.innerWidth >= 768) {
         closeMenu()
+        servicesOpen.value = false
     }
 }
 
@@ -142,26 +143,26 @@ onBeforeUnmount(() => {
             </div>
             <!-- Desktop Menu -->
             <div class="hidden sm:hidden items-center gap-8 md:flex md:gap-4">
-                <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="/"  @mouseenter="servicesOpen = false">Inicio</NuxtLink>
-                <!-- <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="/about" @mouseenter="servicesOpen = false">Quienes Somos</NuxtLink> -->
+                <NuxtLink class="nav-link text-gray-700" active-class="active" to="/"  @mouseenter="servicesOpen = false">Inicio</NuxtLink>
+                <!-- <NuxtLink class="nav-link text-gray-700" active-class="active" to="/about" @mouseenter="servicesOpen = false">Quienes Somos</NuxtLink> -->
                 <div class="nav-link relative text-gray-700 cursor-pointer" @mouseenter="servicesOpen = true" ref="servicesMenuRef">
-                    <div active-class="bg-accent text-white">
+                    <div active-class="active">
                         Servicios
                     </div>
                     <Transition name="dropdown">
                         <div class="dropdown-menu shadow-lg" v-show="servicesOpen" @mouseenter="servicesOpen = true" @mouseleave="servicesOpen = false">
-                            <NuxtLink v-for="service in services" :key="service.name" class="px-15 py-3 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="bg-accent text-white" :to="service.link" @click="servicesOpen = false">
+                            <NuxtLink v-for="service in services" :key="service.name" class="px-15 py-3 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="active" :to="service.link" @click="servicesOpen = false">
                                 {{ service.name }}
                             </NuxtLink>
 
-                            <div class="relative px-15 py-3 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="bg-accent text-white" @mouseenter="ownBrandsOpen = true" @mouseleave="ownBrandsOpen = false">
+                            <div class="relative px-15 py-3 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="active" @mouseenter="ownBrandsOpen = true" @mouseleave="ownBrandsOpen = false">
                                 Own Brands
                                 <Transition name="subdropdown">
                                     <div class="sub-dropdown-menu shadow-lg" v-show="ownBrandsOpen" @mouseenter="ownBrandsOpen = true" @mouseleave="ownBrandsOpen = false">
-                                        <NuxtLink class="block px-4 py-2 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="bg-accent text-white" to="/servicios/own-brands/vibe-music-wear" @click="servicesOpen = false">
+                                        <NuxtLink class="block px-4 py-2 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="active" to="/servicios/own-brands/vibe-music-wear" @click="servicesOpen = false">
                                             Vibe Music Wear
                                         </NuxtLink>
-                                        <NuxtLink class="block px-4 py-2 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="bg-accent text-white" to="/servicios/own-brands/tiento-fest" @click="servicesOpen = false">
+                                        <NuxtLink class="block px-4 py-2 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="active" to="/servicios/own-brands/tiento-fest" @click="servicesOpen = false">
                                             Tiento Fest
                                         </NuxtLink>
                                     </div>
@@ -170,9 +171,9 @@ onBeforeUnmount(() => {
                         </div>
                     </Transition>
                 </div>
-                <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="#" @mouseenter="servicesOpen = false">Portfolio</NuxtLink>
-                <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="/responsabilidad-social"  @mouseenter="servicesOpen = false">RSC</NuxtLink>
-                <NuxtLink class="nav-link text-gray-700" active-class="bg-accent text-white" to="/contacto" @mouseenter="servicesOpen = false">Contacto</NuxtLink>
+                <NuxtLink class="nav-link text-gray-700" active-class="active" to="/portfolio" @mouseenter="servicesOpen = false">Portfolio</NuxtLink>
+                <NuxtLink class="nav-link text-gray-700" active-class="active" to="/responsabilidad-social"  @mouseenter="servicesOpen = false">RSC</NuxtLink>
+                <NuxtLink class="nav-link text-gray-700" active-class="active" to="/contacto" @mouseenter="servicesOpen = false">Contacto</NuxtLink>
             </div>
 
             <!-- Mobile Menu -->
@@ -200,22 +201,22 @@ onBeforeUnmount(() => {
                 <aside v-show="mobileOpen" class="mobile-menu bg-gris-carbon/90 md:hidden">
                     <!-- Mobile Menu Content -->
                     <div ref="mainMobileMenu" class="absolute inset-0 flex flex-col py-8 overflow-hidden">
-                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="/" @click="closeMenu">Inicio</NuxtLink>
-                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="/about" @click="closeMenu">Quienes Somos</NuxtLink>
-                        <div class="mobile-link text-gray-300 cursor-pointer" active-class="bg-accent text-white" @click="openServicesMenu">Servicios</div>
-                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu">Portfolio</NuxtLink>
-                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="/responsabilidad-social" @click="closeMenu">RSC</NuxtLink>
-                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="/contacto" @click="closeMenu">Contacto</NuxtLink>
+                        <NuxtLink class="mobile-link text-gray-300" active-class="active" to="/" @click="closeMenu">Inicio</NuxtLink>
+                        <NuxtLink class="mobile-link text-gray-300" active-class="active" to="/about" @click="closeMenu">Quienes Somos</NuxtLink>
+                        <div class="mobile-link text-gray-300 cursor-pointer" active-class="active" @click="openServicesMenu">Servicios</div>
+                        <NuxtLink class="mobile-link text-gray-300" active-class="active" to="/portfolio" @click="closeMenu">Portfolio</NuxtLink>
+                        <NuxtLink class="mobile-link text-gray-300" active-class="active" to="/responsabilidad-social" @click="closeMenu">RSC</NuxtLink>
+                        <NuxtLink class="mobile-link text-gray-300" active-class="active" to="/contacto" @click="closeMenu">Contacto</NuxtLink>
                     </div>
                     <div ref="servicesMobileMenu" class="absolute inset-0 flex flex-col py-8">
                         <button type="button" class="back-btn text-left font-semibold text-gray-400 ps-4 cursor-pointer" @click="backToMainMenu">
                             <FontAwesomeIcon icon="fa-solid fa-circle-chevron-left" class="back-icon" /> Back
                         </button>
-                        <NuxtLink v-for="service in services" :key="service.name" class="mobile-link text-gray-300" active-class="bg-accent text-white" :to="service.link" @click="closeMenu" @mouseenter="ownBrandsshow = false">{{  service.name }}</NuxtLink>
-                        <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="#" @click="closeMenu" @mouseenter="ownBrandsshow = true">Own Brands</NuxtLink>
+                        <NuxtLink v-for="service in services" :key="service.name" class="mobile-link text-gray-300" active-class="active" :to="service.link" @click="closeMenu" @mouseenter="ownBrandsshow = false">{{  service.name }}</NuxtLink>
+                        <NuxtLink class="mobile-link text-gray-300" active-class="active" to="#" @click="ownBrandsshow = true" @mouseenter="ownBrandsshow = true">Own Brands</NuxtLink>
                         <div v-show="ownBrandsshow" class="flex flex-col ms-12">
-                            <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="/servicios/own-brands/vibe-music-wear" @click="closeMenu">Vibe Music Wear</NuxtLink>
-                            <NuxtLink class="mobile-link text-gray-300" active-class="bg-accent text-white" to="/servicios/own-brands/tiento-fest" @click="closeMenu">Tiento Fest</NuxtLink>
+                            <NuxtLink class="mobile-link text-gray-300" active-class="active" to="/servicios/own-brands/vibe-music-wear" @click="closeMenu">Vibe Music Wear</NuxtLink>
+                            <NuxtLink class="mobile-link text-gray-300" active-class="active" to="/servicios/own-brands/tiento-fest" @click="closeMenu">Tiento Fest</NuxtLink>
                         </div>
                     </div>
                 </aside>
@@ -249,8 +250,12 @@ onBeforeUnmount(() => {
         padding: 6px 10px;
         font-size: calc(1rem + 0.25vw);
 
-        /* border: 1px solid black; */
         border-radius: 10px;
+    }
+
+    .active {
+        background: var(--color-accent);
+        color: #fff;
     }
 
     .nav-link::after {
@@ -266,8 +271,12 @@ onBeforeUnmount(() => {
         transform-origin: left;
     }
 
-    .nav-link:hover::after {
+    .nav-link:hover:not(.active)::after {
         transform: scaleX(1);
+    }
+
+    .nav-link.active:hover {
+        background: var(--color-primary);
     }
 
     .dropdown-menu {

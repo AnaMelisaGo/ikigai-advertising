@@ -12,7 +12,7 @@
                         <ul>
                             <li><a href="/">Inicio</a></li>
                             <li><NuxtLink to="/responsabilidad-social">RSC</NuxtLink></li>
-                            <li><NuxtLink to="#">Portfolio</NuxtLink></li>
+                            <li><NuxtLink to="/portfolio">Portfolio</NuxtLink></li>
                         </ul>
                         
                         
