@@ -110,15 +110,14 @@ onUnmounted(() => {
 <template>
     <section ref="section" class="photo-section">
         <span class="eyebrow">Acerca de</span>
-        <!-- <h2 class="my-5 font-bold text-[2rem] text-center">Significado de Ikigai</h2> -->
         <div class="photos-wrapper">
-            <div ref="leftPhoto" class="left-column">
+            <div ref="leftPhoto" class="left column">
                 <img src="/images/ikigai-name.png" alt="Ikigai" class="photo" />
                 <p class="vida-merito"><span>VIDA</span><span>+</span><span>MÉRITO</span></p>
                 <p>Es un concepto japonés que se refiere a la razón de ser o propósito de la vida.</p>
                 <p>Lo que nos motiva a levantarnos cada día. Lo que hace que la vida valga la pena.</p>
             </div>
-            <div ref="rightPhoto" class="right-column">
+            <div ref="rightPhoto" class="right column">
                 <img src="/images/ikigai-circle.png" alt="Círculo Ikigai" class="photo" />
             </div>
         </div>
@@ -131,7 +130,7 @@ onUnmounted(() => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5rem 1rem;
+    padding: 5rem 1rem 9rem;
 }
 
 .photos-wrapper {
@@ -143,15 +142,23 @@ onUnmounted(() => {
     max-width: 1200px;
 }
 
-.left-column,
-.right-column {
+.column {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
     width: 100%;
+}
+
+.right {
+    padding: 1rem;
+}
+
+.left {
+    padding: 2rem;
+    background: var(--color-gray-100);
+    border-radius: 15px;
 }
 
 .photo {
@@ -160,7 +167,7 @@ onUnmounted(() => {
     border-radius: 10px;
 }
 
-.left-column p {
+.left p {
     padding: 0.5rem 2rem;
 }
 
@@ -178,7 +185,7 @@ onUnmounted(() => {
 @media (min-width: 768px){
     .photos-wrapper {
         flex-direction: row;
-        gap: clamp(2rem, 2vw, 4rem);
+        gap: clamp(1rem, 2vw, 4rem);
     }
 
     .left-column,

@@ -2,10 +2,10 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 const works = ref([
-  { id: 1, title: 'Iscarcup 2025', image: '/images/iscarcup-2025.png' },
-  { id: 2, title: 'Porsche Design Expo', image: '/images/porsche-design-expo.png' },
-  { id: 3, title: 'Fundación Astra Zeneca', image: '/images/fundacion-astra-zeneca.png' },
-  { id: 4, title: 'Adidas Expo', image: '/images/adidas-expo.png' },
+    { id: 1, title: 'Iscarcup 2025', image: '/images/iscarcup-2025.png' },
+    { id: 2, title: 'Porsche Design Expo', image: '/images/porsche-design-expo.png' },
+    { id: 3, title: 'Fundación Astra Zeneca', image: '/images/fundacion-astra-zeneca.png' },
+    { id: 4, title: 'Adidas Expo', image: '/images/adidas-expo.png' },
 ])
 
 const current = ref(0)
@@ -14,7 +14,7 @@ let interval = null
 const currentWork = computed(() => works.value[current.value])
 
 const next = () => {
-  current.value = (current.value + 1) % works.value.length
+    current.value = (current.value + 1) % works.value.length
 }
 
 const prev = () => {
@@ -70,11 +70,18 @@ onUnmounted(() => {
     
             <!-- MAIN VIEW -->
             <div class="carousel-container" @touchstart="onTouchStart" @touchend="onTouchEnd">
-                <img :src="currentWork.image" :alt="currentWork.title" />
-    
+                <img
+                    v-for="(work, index) in works"
+                    :key="work.id"
+                    :src="work.image"
+                    :alt="work.title"
+                    :class="{ active: index === current }"
+                />
                 <!-- hover overlay -->
                 <div class="overlay">
-                    <h2>{{ currentWork.title }}</h2>
+                    <Transition name="title-fade" mode="out-in">
+                        <h2 :key="current">{{ currentWork.title }}</h2>
+                    </Transition>
                 </div>
                 <!-- Buttons -->
                 <button class="prev" @click="prev">&#10094;</button>
@@ -104,10 +111,11 @@ onUnmounted(() => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5rem 1rem 2rem;
+    padding: 3rem 1rem 2rem;
+    margin-bottom: 3rem;
 }
 
-.carousel-section {
+.carousel-section h2 {
     font-size: 2rem;
     font-weight: 700;
 }
@@ -130,14 +138,21 @@ onUnmounted(() => {
 }
 
 .carousel-container img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.5s ease;
 }
 
-/* hover zoom */
-.carousel-container:hover img {
+.carousel-container img.active {
+    opacity: 1;
+}
+
+/* hover zoom — only the visible slide */
+.carousel-container:hover img.active {
     transform: scale(1.05);
 }
 
@@ -154,10 +169,21 @@ onUnmounted(() => {
     transition: opacity 0.3s ease;
     font-weight: 700;
     font-size: 1.5rem;
+    pointer-events: none;
 }
 
 .carousel-container:hover .overlay {
     opacity: 1;
+}
+
+.title-fade-enter-active,
+.title-fade-leave-active {
+    transition: opacity 0.3s ease;
+}
+
+.title-fade-enter-from,
+.title-fade-leave-to {
+    opacity: 0;
 }
 
 /* buttons */
@@ -165,7 +191,7 @@ onUnmounted(() => {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    /* background: rgba(0,0,0,0.4); */
+    z-index: 3;
     color: var(--color-neutral-400);
     font-size: 6rem;
     border: none;
@@ -180,7 +206,6 @@ onUnmounted(() => {
 .thumbnails {
     display: flex;
     gap: 0.5rem;
-    /* overflow-x: auto; */
 }
 
 .thumb {

@@ -40,18 +40,6 @@ onMounted(() => {
         }
     })
 
-    // timeline.fromTo(
-    //     leftPhoto.value,
-    //     { x: -100, y: -80, rotate: -8, opacity: 0 },
-    //     { x: 0, y: 0, rotate: 0, opacity: 1, ease: 'power3.out'}
-    // )
-    // timeline.fromTo(
-    //     rightPhoto.value,
-    //     { x: 100, y: 80, rotate: 8, opacity: 0 },
-    //     { x: 0, y: 0, rotate: 0, opacity: 1, ease: 'power3.out'},
-    //     '<' // start at the same time as the previous animation
-    // )
-
     serviceTimeline.fromTo(
         services.value,
         { y:-80, opacity: 0},
@@ -72,27 +60,28 @@ onMounted(() => {
 
 onUnmounted(() => {
     // Clean up the ScrollTrigger
-    // timeline.scrollTrigger?.kill()
     serviceTimeline.scrollTrigger?.kill()
     carouselTimeline.scrollTrigger?.kill()
     processTimeline.scrollTrigger?.kill()
+
     // clean up the timeline
-    // timeline?.kill()
     serviceTimeline?.kill()
     carouselTimeline?.kill()
     processTimeline?.kill()
 })
-
 </script>
 
 <template>
     <Hero />
-    <!-- Brief about Ikigai -->
+    <!-- Acerca de Ikigai -->
     <Description />
+
+    <!-- Sección de procesos de trabajo -->
     <section ref="process">
         <Process />
     </section>
-    <!-- Services section -->
+
+    <!-- Presentación de servicios -->
     <section ref="services" class="services-section">
         <span class="eyebrow">SERVICIOS</span>
 
@@ -120,25 +109,28 @@ onUnmounted(() => {
             </article>
         </div>
     </section>
+
     <!-- Trabajos destacados -->
      <section ref="carousel">
          <Carousel />
      </section>
+
     <!-- Logos -->
     <Logos />
+
+    <!-- CTA -->
     <ReusablePreFooter
         title="¿Listo para crear algo asombroso?"
         caption="Haz que tus ideas se hagan realidad."
         button-text="Empieza ahora"
-        button-link="#"
+        button-link="/contacto"
     />
 </template>
 <style scoped>
 /* Services Section */
-
 .services-section {
-    margin-top: 5rem;
-    padding: 1rem;
+    margin: 7rem 0;
+    padding: 6rem 1rem 0;
     text-align: center;
 }
 
@@ -148,24 +140,23 @@ onUnmounted(() => {
 }
 
 .services-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
 }
 
 .service-card {
-  padding: 2rem;
-  border-radius: 24px;
-  background: white;
-  border: 1px solid #ececec;
-
-  transition: all .35s ease;
+    padding: 2rem;
+    border-radius: 24px;
+    background: white;
+    border: 1px solid #ececec;
+    transition: all .35s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,.08);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,.08);
 }
 
 .service-card h3 {
@@ -176,29 +167,17 @@ onUnmounted(() => {
     color: var(--color-primary)
 }
 
-@media (min-width: 768px) {
-    .circle-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        position: static;
-        height: auto;
-        max-width: 1000px;
-        flex-wrap: nowrap;
-    }
 
-    .circle {
-        position: static;
-        transform: none;
-        width: 200px;
-        height: 200px;
-        flex-shrink: 0;
-    }
 
+@media (min-width: 768px) and (max-width: 990px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 991px) {
     .services-grid {
         grid-template-columns: repeat(4, 1fr);
-
     }
 }
 </style>

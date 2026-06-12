@@ -14,7 +14,7 @@
         <div class="title">
             <h1>El poder de crear</h1>
             <p>Innovación, estrategia y creatividad</p>
-            <NuxtLink to="#" class="cta-btn">Empieza tu proyecto</NuxtLink>
+            <NuxtLink to="/portfolio" class="cta-btn">Ver Portfolio</NuxtLink>
         </div>
     </section>
 </template>
@@ -22,7 +22,6 @@
 .hero-container {
     position: relative;
     height: 90vh;
-    /* width: 100%; */
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -49,13 +48,12 @@
     color: white;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     top: 90px;
 }
 
 .title h1 {
-    font-size: clamp(2rem, 8vw, 5rem);
+    font-size: clamp(2rem, 10vw, 5rem);
     font-weight: 600;
     animation: scale-up 1s ease-out forwards;
     text-align: center;
@@ -75,10 +73,10 @@
 
 .cta-btn {
     background: rgb(39 39 39 / 22%);
-    margin: 20px;
-    padding: 10px 25px;
+    margin: 2.5rem 1rem 1.5rem;
+    padding: 0.75rem 3.5rem;
     border: solid 1px white;
-    border-radius: 5px;
+    border-radius: 999px;
     transition: transform 0.5s ease-in-out, background 0.5s ease, box-shadow 0.5s ease;
     opacity: 0;
     animation: slide-down 1s ease-out 3s 1 normal forwards;
@@ -91,6 +89,7 @@
     transform-origin: center;
 }
 
+/* animations */
 @keyframes slide-down {
     from {
         margin-bottom: 100px;
@@ -101,8 +100,6 @@
         opacity: 1;
     }
 }
-
-/* animations */
 
 @keyframes scale-up {
     0% {
@@ -135,5 +132,4 @@
         border-color: transparent;
     }
 }
-
 </style>
