@@ -27,6 +27,8 @@ export const portfolioSections = [
             '/images/portfolio/decoracion/portal.png',
             '/images/portfolio/decoracion/sauza.png',
             '/images/portfolio/decoracion/sukhiro.png',
+            '/images/portfolio/decoracion/tizona.png',
+            '/images/portfolio/decoracion/women-secret.png',
         ]
     },
     {
