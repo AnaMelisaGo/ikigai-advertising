@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-
+import { useReveal } from '~/composables/useReveal'
+useReveal()
 </script>
 
 <template>
@@ -20,17 +20,17 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
     <!-- About -->
     <section class="section">
-        <div class="section-container grid">
+        <div class="section-container grid reveal">
             <div>
                 <span class="section-label">Quiénes Somos</span>
 
-                <h2 class="section-title">
+                <h2 class="section-title reveal">
                     Más que publicidad,
                     construimos significado.
                 </h2>
             </div>
 
-            <div class="content-text">
+            <div class="content-text reveal">
                 <p>
                     En nuestra empresa creemos que toda marca tiene un propósito,
                     una razón de ser. Nuestro nombre refleja nuestra filosofía:
@@ -58,16 +58,16 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
     <!-- Values -->
     <section class="values-section">
         <div class="section-container">
-            <div class="section-center">
+            <div class="section-center reveal">
                 <span class="section-label">Nuestra Esencia</span>
 
-                <h2 class="section-title center">
+                <h2 class="section-title center reveal">
                     Lo que nos impulsa cada día
                 </h2>
             </div>
 
             <div class="cards">
-                <div class="card">
+                <div class="card reveal">
                     <div class="icon">
                         <FontAwesomeIcon :icon="['fas','bullseye']" />
                     </div>
@@ -78,7 +78,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
                     </p>
                 </div>
 
-            <div class="card">
+            <div class="card reveal">
                 <div class="icon">
                     <FontAwesomeIcon :icon="['fas','paintbrush']" />
                 </div>
@@ -89,7 +89,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
                 </p>
             </div>
 
-            <div class="card">
+            <div class="card reveal">
                 <div class="icon">
                     <FontAwesomeIcon :icon="['fas','check']" />
                 </div>
@@ -105,21 +105,21 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
     <!-- Team -->
     <section class="section">
-        <div class="section-container team-grid">
+        <div class="section-container team-grid reveal">
             <div>
                 <span class="section-label">Nuestro Equipo</span>
 
-                <h2 class="section-title">
+                <h2 class="section-title reveal">
                     Personas apasionadas detrás de cada proyecto.
                 </h2>
 
-                <p class="content-text">
+                <p class="content-text reveal">
                     Nuestro equipo está conformado por profesionales apasionados,
                     estrategas, creativos y productores que entienden que cada
                     proyecto es único.
                 </p>
 
-                <p class="content-text mt">
+                <p class="content-text mt reveal">
                     Nos involucramos desde el primer momento, construyendo relaciones
                     sólidas basadas en la confianza, la innovación y el compromiso
                     con la excelencia.
@@ -127,17 +127,17 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
             </div>
 
             <div class="highlight-box">
-                <div class="stat">
+                <div class="stat reveal">
                     <span>100%</span>
                     <p>Compromiso con cada cliente</p>
                 </div>
 
-                <div class="stat">
+                <div class="stat reveal">
                     <span>360°</span>
                     <p>Soluciones integrales de marketing</p>
                 </div>
 
-                <div class="stat">
+                <div class="stat reveal">
                     <span>∞</span>
                     <p>Ideas con potencial ilimitado</p>
                 </div>
@@ -147,14 +147,14 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
     <!-- Final CTA -->
     <section class="final-section">
-        <div class="section-container center-content">
+        <div class="section-container center-content reveal">
             <span class="section-label">Nuestra Filosofía</span>
 
-            <h2 class="final-title">
+            <h2 class="final-title reveal">
             No solo diseñamos campañas.
             </h2>
 
-            <p class="final-text">
+            <p class="final-text reveal">
             Damos vida a ideas que inspiran, emocionan y conectan con las
             personas. Porque detrás de cada marca existe una historia que
             merece ser contada de la manera correcta.
@@ -164,10 +164,10 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
   </div>
   <ReusablePreFooter
-    title="Únete a nuestro equipo"
-    caption="Buscamos personas con talento que compartan nuestra pasión por la creatividad y la innovoción"
+    title="¿Tienes un proyecto?"
+    caption="Toda gran idea comienza con una conversación. Hablemos sobre tu visión y hagámosla crecer juntos."
     button-text="Contáctanos"
-    button-link="#"
+    button-link="/contacto"
     />
 </template>
 

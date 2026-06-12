@@ -177,6 +177,12 @@ onMounted(() => {
         Top
     </button>
 </Transition>
+<ReusablePreFooter 
+title="¿Te gusta lo que hacemos?"
+caption="Si nuestra forma de trabajar encaja con lo que buscas, estaremos encantados de colaborar contigo en tu próximo proyecto."
+button-text="Empieza tu proyecto"
+button-link="/contacto"
+/>
 </template>
 
 <style scoped>

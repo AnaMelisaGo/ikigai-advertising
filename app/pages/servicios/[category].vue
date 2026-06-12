@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 import { useRoute } from 'nuxt/app'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+// import gsap from 'gsap'
+// import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger)
-
-
+// gsap.registerPlugin(ScrollTrigger)
+import { useReveal } from '~/composables/useReveal'
+useReveal()
 // const category = computed(() => route.params.category as string)
 // const category = route.params.category as string
 const VALID = ['graphics', 'events', 'digital']
@@ -176,31 +176,31 @@ if (!pageData) {
   })
 }
 
-onMounted(() => {
-  gsap.from('.hero-content', {
-    y: 40,
-    opacity: 0,
-    duration: 1.2,
-    ease: 'power3.out'
-  })
+// onMounted(() => {
+//   gsap.from('.hero-content', {
+//     y: 40,
+//     opacity: 0,
+//     duration: 1.2,
+//     ease: 'power3.out'
+//   })
 
-    gsap.utils.toArray('.card').forEach((el: any, i) => {
-        gsap.from(el, {
-            y: 70,
-            opacity: 0,
-            duration: 1,
-            delay: i * 0.03,
-            ease: 'power3.out',
+//     gsap.utils.toArray('.card').forEach((el: any, i) => {
+//         gsap.from(el, {
+//             y: 70,
+//             opacity: 0,
+//             duration: 1,
+//             delay: i * 0.03,
+//             ease: 'power3.out',
 
-            clearProps: 'transform',
+//             clearProps: 'transform',
 
-            scrollTrigger: {
-                trigger: el,
-                start: 'top 85%'
-            }
-        })
-    })
-})
+//             scrollTrigger: {
+//                 trigger: el,
+//                 start: 'top 85%'
+//             }
+//         })
+//     })
+// })
 </script>
 
 <template>
@@ -221,11 +221,11 @@ onMounted(() => {
 </section>
 
 <!-- GRID -->
-<section class="grid">
+<section class="grid reveal">
     <div
         v-for="block in pageData.items"
         :key="block.title"
-        class="card"
+        class="card reveal"
     >
         <div class="header">
             <div class="icon">
@@ -276,6 +276,8 @@ button-link="/contacto"
   border-radius: 999px;
   font-weight: 600;
   margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeIn 2s ease-out 1.5s 1 normal forwards;
 }
 
 .hero h1 {
@@ -284,6 +286,10 @@ button-link="/contacto"
   /* color: #111827; */
   letter-spacing: -0.05em;
   font-weight: 600;
+  opacity: 0;
+  animation: slideDown 1s ease-in-out forwards;
+    transition: transform 1s ease-in-out;
+
 }
 
 .hero p {
@@ -292,6 +298,10 @@ button-link="/contacto"
   max-width: 700px;
   line-height: 1.8;
   font-size: 1.1rem;
+  opacity: 0;
+  animation: slideDown 1s ease-in-out forwards;
+    transition: transform 1s ease-in-out;
+    animation-delay: .5s;
 }
 
 .glow {
@@ -374,5 +384,25 @@ li {
 
 li:last-child {
   border-bottom: none;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 </style>
