@@ -1,4 +1,11 @@
 <script setup>
+// import { onMounted, nextTick } from 'vue'
+// import gsap from 'gsap'
+// import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+// gsap.registerPlugin(ScrollTrigger)
+import { useReveal } from '~/composables/useReveal'
+useReveal()
 const collaborators = [
   {
     name: 'CARL COX',
@@ -34,6 +41,27 @@ const products = [
   '/images/vibe/black-tshirt.png',
   '/images/vibe/white-tshirt.png'
 ]
+
+// onMounted(async () => {
+//   await nextTick()
+
+//   setTimeout(() => {
+//     gsap.utils.toArray(".reveal").forEach((el) => {
+//       gsap.from(el, {
+//         opacity: 0,
+//         y: 40,
+//         duration: 1,
+//         clearProps: 'transform',
+//         scrollTrigger: {
+//           trigger: el,
+//           start: "top 85%"
+//         }
+//       })
+//     })
+
+//     ScrollTrigger.refresh()
+//   }, 300)
+// })
 </script>
 
 <template>
@@ -48,26 +76,27 @@ background="linear-gradient(178.6deg, rgb(232, 245, 253) 3.3%, rgb(252, 253, 255
 <!-- ABOUT -->
 <section class="about section">
     <div class="container">
-        <div class="about-grid">
+        <div class="about-grid reveal">
             <div>
-                <h2>¿Qué es?</h2>
-                <p class="lead">
+                <h2 class="reveal">¿Qué es?</h2>
+                <p class="lead reveal">
                     La marca de streetwear para amantes de la moda y de la música electrónica.
                 </p>
                 <img
                     src="/images/vibe/hero.png"
                     alt="Vibe Wear"
+                    class="reveal"
                 >
-                <h2>¿Cómo?</h2>
+                <h2 class="reveal">¿Cómo?</h2>
 
-                <ul>
+                <ul class="reveal">
                     <li>Colecciones propias</li>
                     <li>Colaboraciones estratégicas con artistas y eventos.</li>
                 </ul>
             </div>
             <div>
-                <h2>Objectivo</h2>
-                <ul>
+                <h2 class="reveal">Objectivo</h2>
+                <ul class="reveal">
                     <li>Construcción de marca personal artistas/festivales/clubes</li>
                     <li>Unir a todos los amantes de la música electrónica</li>
                     <li>Desarrollar el concepto "VIBE CREW" en toda la industria.</li>
@@ -79,11 +108,11 @@ background="linear-gradient(178.6deg, rgb(232, 245, 253) 3.3%, rgb(252, 253, 255
 
 <!-- COLLABORATORS -->
 <section class="collaborators section">
-    <div class="collab-container">
-        <div class="section-header">
+    <div class="collab-container reveal">
+        <div class="section-header reveal">
             <span>COLLABORACIONES</span>
-            <h2>Artistas, Festivales & Clubes</h2>
-            <p>
+            <h2 class="reveal">Artistas, Festivales & Clubes</h2>
+            <p class="reveal">
                 Colaboraciones que potencian la comunidad VIBE en toda la industria de la música electrónica.
             </p>
         </div>
@@ -91,7 +120,7 @@ background="linear-gradient(178.6deg, rgb(232, 245, 253) 3.3%, rgb(252, 253, 255
             <div
                 v-for="partner in collaborators"
                 :key="partner.name"
-                class="partner"
+                class="partner reveal"
             >
                 <h3>{{ partner.name }}</h3>
                 <span>{{ partner.followers }}</span>
@@ -104,20 +133,21 @@ background="linear-gradient(178.6deg, rgb(232, 245, 253) 3.3%, rgb(252, 253, 255
 <section class="gallery section">
     <div class="container">
 
-    <div class="section-header">
+    <div class="section-header reveal">
         <span>COLLECTIONES</span>
-        <h2>Galería de Productos</h2>
+        <h2 class="reveal">Galería de Productos</h2>
     </div>
 
     <div class="gallery-grid">
         <div
         v-for="(product, index) in products"
         :key="index"
-        class="gallery-item"
+        class="gallery-item reveal"
         >
         <img
             :src="product"
             alt="Product"
+            class="reveal"
         >
         </div>
     </div>

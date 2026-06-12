@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { useWhatsAppMessage } from '~/composables/useWhatsAppMessage'
+import { useReveal } from '~/composables/useReveal'
 
 const config = useRuntimeConfig()
 const phone = config.public.whatsappNumber
@@ -10,6 +11,8 @@ const openWa = () => {
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message.value)}`
     window.open(url, '_blank')
 }
+
+useReveal()
 </script>
 <template>
     <section class="bg-white min-h-screen">
@@ -22,7 +25,7 @@ const openWa = () => {
         background="linear-gradient(to top, #fff1eb 0%, #ace0f9 100%)"
         />
         <!-- Información del contacto -->
-        <div class="max-w-7xl mx-auto px-6 pb-24 mt-20">
+        <div class="max-w-7xl mx-auto px-6 pb-24 mt-20 reveal">
             <div
             class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start"
             >
@@ -81,7 +84,7 @@ const openWa = () => {
                     <div class="flex gap-4">
                     <!-- Instagram -->
                     <NuxtLink to="https://www.instagram.com/" target="_blank" aria-label="Instagram"
-                        class="btn-186">
+                        class="contact-btn">
                         <span class="btn-icon">
                             <FontAwesomeIcon :icon="['fab', 'instagram']" class="fa-inst" />
                             <span class="btn-front-text">Follow</span>
@@ -89,7 +92,7 @@ const openWa = () => {
                         </span>
                     </NuxtLink>
                     <!-- WhatsApp -->
-                    <button class="btn-186" @click="openWa">
+                    <button class="contact-btn" @click="openWa">
                         <span class="btn-icon">
                             <FontAwesomeIcon :icon="['fab','whatsapp']" class="fa-inst" />
                             <span class="was-front-text">Mensaje</span>
@@ -103,7 +106,7 @@ const openWa = () => {
 
             <!-- Map -->
             <div
-                class="overflow-hidden rounded-3xl border border-gray-100 shadow-sm h-125"
+                class="overflow-hidden rounded-3xl border border-gray-100 shadow-sm h-125 reveal"
             >
                 <iframe
                 title="Google Maps"
@@ -119,26 +122,11 @@ const openWa = () => {
     </section>
 </template>
 <style scoped>
-.contact-icon {
-    /* color: #fff; */
-    font-size: 3rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.8s ease, color 0.8s ease;
-    transform-origin: center;
-}
-
-.contact-icon:hover {
-    color: var(--color-accent);
-    transform: scale(1.3);
-}
-
 h3 {
     color: var(--color-accent);
 }
 
-.btn-186 {
+.contact-btn {
     --width: 155px;
     --height: 50px;
     --border_radius: 30px;
@@ -161,7 +149,7 @@ h3 {
     font-weight: 700;
 }
 
-.btn-186 .btn-icon {
+.contact-btn .btn-icon {
     position: absolute;
     top: 0;
     left: 9px;
@@ -173,23 +161,23 @@ h3 {
     z-index: 1;
 }
 
-.btn-186 .btn-icon .fa-inst {
+.contact-btn .btn-icon .fa-inst {
     width: 30px;
     height: 30px;
     padding: 5px;
     color: var(--color-accent)
 }
 
-.btn-186 .btn-front-text {
+.contact-btn .btn-front-text {
     margin-left: 20px;
 }
 
-.btn-186 .was-front-text {
+.contact-btn .was-front-text {
     margin-left: 15px;
 }
 
 
-.btn-186 .btn-back-text {
+.contact-btn .btn-back-text {
     position: absolute;
     top: 0;
     left: calc(var(--width) * -1);
@@ -212,17 +200,17 @@ h3 {
     font-size: 13px
 }
 
-.btn-186:hover .btn-icon {
+.contact-btn:hover .btn-icon {
     left: 100%;
     transform: translate(-35%, 0%);
 }
 
-.btn-186:hover .btn-back-text {
+.contact-btn:hover .btn-back-text {
     left: 10%;
     transform: translate(-110%, 0%);
 }
 
-.btn-186:active {
+.contact-btn:active {
     transform: scale(1.03);
 }
 

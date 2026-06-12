@@ -1,9 +1,11 @@
 <script setup>
-import { onMounted } from 'vue'
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
+// import { onMounted } from 'vue'
+// import gsap from 'gsap'
+// import ScrollTrigger from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger)
+// gsap.registerPlugin(ScrollTrigger)
+import { useReveal } from '~/composables/useReveal'
+useReveal()
 
 const highlights = [
   'Gastronomía',
@@ -30,65 +32,65 @@ const gallery = [
   '/images/tiento/poster-tiento3.png',
 ]
 
-onMounted(() => {
-  // HERO
-  gsap.from('.hero .container > *', {
-    opacity: 0,
-    y: 30,
-    duration: 1,
-    stagger: 0.15,
-    ease: 'power3.out'
-  })
+// onMounted(() => {
+//   // HERO
+//   gsap.from('.hero .container > *', {
+//     opacity: 0,
+//     y: 30,
+//     duration: 1,
+//     stagger: 0.15,
+//     ease: 'power3.out'
+//   })
 
-  // OVERVIEW
-  gsap.from('.overview .content > *', {
-    scrollTrigger: {
-      trigger: '.overview',
-      start: 'top 75%'
-    },
-    opacity: 0,
-    y: 30,
-    duration: 1,
-    stagger: 0.12
-  })
+//   // OVERVIEW
+//   gsap.from('.overview .content > *', {
+//     scrollTrigger: {
+//       trigger: '.overview',
+//       start: 'top 75%'
+//     },
+//     opacity: 0,
+//     y: 30,
+//     duration: 1,
+//     stagger: 0.12
+//   })
 
-  gsap.from('.cover-image img', {
-    scrollTrigger: {
-      trigger: '.overview',
-      start: 'top 70%'
-    },
-    scale: 1.05,
-    opacity: 0,
-    duration: 1.2,
-    ease: 'power2.out',
-  })
+//   gsap.from('.cover-image img', {
+//     scrollTrigger: {
+//       trigger: '.overview',
+//       start: 'top 70%'
+//     },
+//     scale: 1.05,
+//     opacity: 0,
+//     duration: 1.2,
+//     ease: 'power2.out',
+//   })
 
-  // RESULTS
-  gsap.from('.result-card', {
-    scrollTrigger: {
-      trigger: '.results',
-      start: 'top 75%'
-    },
-    opacity: 0,
-    y: 20,
-    duration: 0.8,
-    stagger: 0.1,
+//   // RESULTS
+//   gsap.from('.result-card', {
+//     scrollTrigger: {
+//       trigger: '.results',
+//       start: 'top 75%'
+//     },
+//     opacity: 0,
+//     y: 20,
+//     duration: 0.8,
+//     stagger: 0.1,
 
-    clearProps: 'transform',
-  })
+//     clearProps: 'transform',
+//   })
 
-  // GALLERY
-  gsap.from('.gallery-item', {
-    scrollTrigger: {
-      trigger: '.gallery',
-      start: 'top 80%'
-    },
-    opacity: 0,
-    scale: 0.95,
-    duration: 0.8,
-    stagger: 0.08
-  })
-})
+//   // GALLERY
+//   gsap.from('.gallery-item', {
+//     scrollTrigger: {
+//       trigger: '.gallery',
+//       start: 'top 80%'
+//     },
+//     opacity: 0,
+//     scale: 0.95,
+//     duration: 0.8,
+//     stagger: 0.08
+//   })
+// })
 </script>
 
 <template>
@@ -121,29 +123,29 @@ onMounted(() => {
 
         <div class="overview-grid">
 
-          <div class="content">
+          <div class="content reveal">
 
-            <h2>¿Qué es?</h2>
-            <p class="lead">
+            <h2 class="reveal">¿Qué es?</h2>
+            <p class="lead reveal">
               Un festival de los sentidos centrado en la revitalización de las comunidades locales a través de la cultura, la gastronomía, la música, el deporte y el entretenimiento familiar.
             </p>
 
-            <h2>Objectivo</h2>
-            <p>
+            <h2 class="reveal">Objectivo</h2>
+            <p class="reveal">
               Revitalizar las plazas de los pueblos y volver a convertirlas en un espacio vibrante de celebración y convivencia.
             </p>
 
-            <h2>¿Cómo?</h2>
+            <h2 class="reveal">¿Cómo?</h2>
 
             <ul>
-              <li v-for="item in highlights" :key="item">
+              <li v-for="item in highlights" :key="item" class="reveal">
                 {{ item }}
               </li>
             </ul>
 
           </div>
 
-          <div class="cover-image">
+          <div class="cover-image reveal">
             <img src="/images/tiento/poster-tiento2.png" alt="Tiento Fest">
           </div>
 
@@ -154,14 +156,14 @@ onMounted(() => {
 
     <!-- RESULTS -->
     <section class="results">
-      <div class="container">
+      <div class="container reveal">
 
-        <div class="section-header">
+        <div class="section-header reveal">
           <span>I EDICIÓN</span>
           <h2>Results</h2>
         </div>
 
-        <div class="results-grid">
+        <div class="results-grid reveal">
           <div
             v-for="result in results"
             :key="result"
@@ -176,18 +178,18 @@ onMounted(() => {
 
     <!-- GALLERY -->
     <section class="gallery">
-      <div class="container">
+      <div class="container reveal">
 
-        <div class="section-header">
+        <div class="section-header reveal">
           <span>EXPERIENCIA</span>
           <h2>Festival Highlights</h2>
         </div>
 
-        <div class="gallery-grid">
+        <div class="gallery-grid reveal">
           <div
             v-for="(image, index) in gallery"
             :key="index"
-            class="gallery-item"
+            class="gallery-item reveal"
           >
             <img :src="image" alt="Tiento Festival">
           </div>

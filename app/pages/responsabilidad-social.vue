@@ -1,27 +1,6 @@
 <script setup>
-import { onMounted, ref, nextTick } from 'vue'
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
-
-const pillars = ref(null)
-
-onMounted(() => {
-
-    gsap.utils.toArray(".reveal").forEach((el) => {
-        gsap.from(el, {
-            opacity: 0,
-            y: 40,
-            duration: 1,
-            ease: "power3.out",
-            scrollTrigger: {
-                trigger: el,
-                start: "top 85%"
-            }
-        })
-    })
-})
+import { useReveal } from '~/composables/useReveal'
+useReveal()
 </script>
 <template>
   <div class="rsc">
