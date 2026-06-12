@@ -36,7 +36,7 @@ const goHome = () => clearError({ redirect: '/' })
             <h2>{{ error.statusMessage }}</h2>
         </div>
 
-        <button @click="goHome" class="btn-96">
+        <button @click="goHome" class="inicio-btn">
             Ir al inicio
         </button>
     </main>
@@ -88,7 +88,7 @@ const goHome = () => clearError({ redirect: '/' })
     box-shadow: 10px 7px 12px var(--color-gray-500);
 } */
 
-.btn-96 {
+.inicio-btn {
     position: relative;
     padding: 10px 20px;
     border-radius: 7px;
@@ -115,18 +115,19 @@ const goHome = () => clearError({ redirect: '/' })
     margin-top: 3rem;
 }
 
-.btn-96:hover {
+.inicio-btn:hover {
     color: #fff;
     background: var(--color-accent);
     box-shadow: 0 0 30px 5px var(--color-orange-300);
+    transform: translateY(-4px);
     transition: all 0.2s ease-out;
 }
 
-.btn-96:hover::before {
-    animation: animation_96 0.5s 0s linear;
+.inicio-btn:hover::before {
+    animation: shine 0.5s 0s linear;
 }
 
-.btn-96::before {
+.inicio-btn::before {
     content: '';
     display: block;
     width: 10px;
@@ -135,17 +136,17 @@ const goHome = () => clearError({ redirect: '/' })
     top: 0;
     left: 0%;
     opacity: 0;
-    background: #fff;
-    box-shadow: 0 0 50px 30px #fff;
+    background: #efeeee;
+    box-shadow: 0 0 50px 30px #ffffff;
     transform: skewX(-20deg);
 }
 
-.btn-96:active {
+.inicio-btn:active {
     box-shadow: 0 0 0 0 transparent;
     transition: box-shadow 0.2s ease-in;
 }
 
-@keyframes animation_96 {
+@keyframes shine {
     0% {
         opacity: 0;
         left: 0%;
