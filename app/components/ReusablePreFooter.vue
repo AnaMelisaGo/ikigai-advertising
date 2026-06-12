@@ -43,7 +43,8 @@ defineProps({
     display: flex;
     justify-content: center;
     align-items: center;
-    background: radial-gradient(592px at 48.2% 50%, rgba(255, 255, 249, 0.6) 0%, rgb(160, 199, 254) 74.6%);
+    background: linear-gradient(to top, #cde3f8 0%, white 100%);
+    /* background: radial-gradient(592px at 48.2% 50%, rgba(255, 255, 249, 0.6) 0%, rgb(160, 199, 254) 74.6%); */
 }
 .prefoot-content {
     display: flex;

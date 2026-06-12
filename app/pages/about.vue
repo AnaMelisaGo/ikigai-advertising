@@ -164,8 +164,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
   </div>
   <ReusablePreFooter
-    title="Únete a nuestro equipo"
-    caption="Buscamos personas con talento que compartan nuestra pasión por la creatividad y la innovoción"
+    title="¿Tienes un proyecto?"
+    caption="Toda gran idea comienza con una conversación. Hablemos sobre tu visión y hagámosla crecer juntos."
     button-text="Contáctanos"
     button-link="#"
     />

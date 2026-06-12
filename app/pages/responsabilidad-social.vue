@@ -102,10 +102,11 @@ onMounted(() => {
     <!-- CTA -->
 
     <ReusablePreFooter 
-    title="Construimos proyectos"
-    caption="A través de la creatividad"
-    button-text="Contactar"
-    button-link="/contacto"
+    span="¿Quieres conocernos?"
+    title="Descubre quienes somos"
+    caption="Conoce nuestra historia, nuestros valores y el equipo que hace posible cada proyecto."
+    button-text="Acerca de Ikigai Advertising"
+    button-link="/about"
     />
   </div>
 </template>
