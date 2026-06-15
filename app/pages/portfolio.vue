@@ -101,57 +101,54 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="intro">
-      <span class="tag">
-        Portfolio
-      </span>
+<section class="intro">
+  <span class="tag">
+    Portfolio
+  </span>
 
-      <h1>
-        Proyectos que transforman
-      </h1>
-    </div>
-  <section class="portfolio">
+  <h1>
+    Proyectos que transforman
+  </h1>
+</section>
+<section class="portfolio">
+  <article class="selector">
+    <button
+      v-for="(item,index) in portfolioSections"
+      :key="item.title"
+      :class="{ active: activeIndex === index }"
+      @click="selectCategory(index)"
+    >
+      {{ item.title }}
+    </button>
 
+  </article>
 
-    <div class="selector">
+  <article class="portfolio-hero">
 
-      <button
-        v-for="(item,index) in portfolioSections"
-        :key="item.title"
-        :class="{ active: activeIndex === index }"
-        @click="selectCategory(index)"
+    <div class="hero-image-wrapper">
+      <img
+        :src="activeSection.image"
+        :alt="activeSection.title"
+        class="hero-image"
       >
-        {{ item.title }}
-      </button>
+    </div>
+
+    <div class="hero-content">
+
+      <h2>
+        {{ activeSection.title }}
+      </h2>
+
+      <p>
+        Descubre algunos de nuestros trabajos más representativos.
+      </p>
 
     </div>
 
-    <div class="portfolio-hero">
+  </article>
 
-      <div class="hero-image-wrapper">
-        <img
-          :src="activeSection.image"
-          :alt="activeSection.title"
-          class="hero-image"
-        >
-      </div>
-
-      <div class="hero-content">
-
-        <h2>
-          {{ activeSection.title }}
-        </h2>
-
-        <p>
-          Descubre algunos de nuestros trabajos más representativos.
-        </p>
-
-      </div>
-
-    </div>
-
-    <section class="gallery">
-
+  <article class="gallery">
+    <div class="gallery-container">
       <div
         v-for="image in activeSection.projects"
         :key="image"
@@ -163,11 +160,11 @@ onMounted(() => {
           loading="lazy"
         >
       </div>
+    </div>
+  </article>
 
-    </section>
-
-  </section>
-  <Transition name="scroll-top">
+</section>
+<Transition name="scroll-top">
     <button
         v-if="showScrollTop"
         class="scroll-top-btn"
@@ -186,57 +183,9 @@ button-link="/contacto"
 </template>
 
 <style scoped>
-/* scroll to top */
-.scroll-top-btn {
-    position: fixed;
-    right: 30px;
-    bottom: 180px;
-
-    width: 65px;
-    height: 65px;
-
-    border: none;
-    border-radius: 50%;
-
-    /* background: rgba(255,255,255,0.95); */
-    background: var(--color-accent);
-    backdrop-filter: blur(20px);
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.12);
-
-    cursor: pointer;
-
-    font-size: 0.8rem;
-    color: #fff;
-        padding: 10px;
-    z-index: 999;
-
-    transition: all .8s ease;
-}
-
-.fa-icon {
-    font-size: 1.5rem;
-}
-
-.scroll-top-btn:hover {
-    transform: translateY(-4px);
-}
-
-.scroll-top-enter-active,
-.scroll-top-leave-active {
-    transition: all .3s ease;
-}
-
-.scroll-top-enter-from,
-.scroll-top-leave-to {
-    opacity: 0;
-    transform: translateY(20px);
-}
-
 /* portfolio */
 .portfolio {
-    padding: 80px 24px;
+    padding: 1.2rem;
 }
 
 .intro {
@@ -244,7 +193,7 @@ button-link="/contacto"
     margin: 0 auto 50px;
     text-align: center;
     background: linear-gradient(to bottom, #dfe9f3 0%, white 100%);
-    padding: 8rem 2rem;
+    padding: 8rem 2rem 2rem;
 }
 
 .tag {
@@ -268,10 +217,14 @@ button-link="/contacto"
 
 .portfolio-hero {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1fr;
     gap: 60px;
     align-items: center;
     margin-bottom: 70px;
+}
+
+.hero-content {
+  grid-row: 1;
 }
 
 .hero-image-wrapper {
@@ -308,7 +261,7 @@ button-link="/contacto"
     justify-content: center;
     flex-wrap: wrap;
     gap: 12px;
-    margin-bottom: 70px;
+    margin-bottom: 7rem;
 }
 
 .selector button {
@@ -342,8 +295,16 @@ button-link="/contacto"
 }
 
 .gallery {
-    columns: 1;
-    column-gap: 20px;
+    /* columns: 1;
+    column-gap: 20px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gallery-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .gallery-item {
@@ -364,21 +325,73 @@ button-link="/contacto"
     transform: scale(1.06);
 }
 
-@media (max-width: 1024px) {
+/* scroll to top */
+.scroll-top-btn {
+    position: fixed;
+    right: 30px;
+    bottom: 180px;
+    width: 65px;
+    height: 65px;
+    border: none;
+    border-radius: 50%;
+    background: var(--color-accent);
+    backdrop-filter: blur(20px);
+    box-shadow: 4px 5px 10px rgba(0, 0, 0, .50);
+    cursor: pointer;
+    font-size: 0.8rem;
+    color: #fff;
+        padding: 10px;
+    z-index: 999;
+    transition: all .8s ease;
+}
+
+.fa-icon {
+    font-size: 1.5rem;
+}
+
+.scroll-top-btn:hover {
+    transform: translateY(-4px);
+}
+
+.scroll-top-enter-active,
+.scroll-top-leave-active {
+    transition: all .3s ease;
+}
+
+.scroll-top-enter-from,
+.scroll-top-leave-to {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
     .intro h1 {
         font-size: clamp(3rem, 6vw, 5rem);
     }
 
     .portfolio-hero {
-        grid-template-columns: 1fr;
+      grid-template-columns: 1.5fr 1fr;
+      padding: 0 3rem;
+    }
+
+    .hero-content {
+      grid-column: 2;
     }
 
     .hero-image {
         height: 500px;
     }
 
-    .gallery {
-        columns: 2;
+    .gallery-container {
+        /* columns: 2; */
+        flex-direction: row;
+        flex-wrap: wrap;
+        /* gap: 0.5rem; */
+        column-gap: 3%;
+    }
+
+    .gallery-item {
+      flex: 0 0 48%;
     }
 
 }
@@ -386,13 +399,29 @@ button-link="/contacto"
 @media (min-width: 1025px) {
 
     .portfolio {
-        padding: 0 6% 120px;
+        padding: 0 4% 120px;
     }
 
-    .gallery {
-        columns: 3;
+    .portfolio-hero {
+      grid-template-columns: 1.5fr 1fr;
+      padding: 0 3rem;
     }
 
+    .hero-content {
+      grid-column: 2;
+    }
+
+    .gallery-container {
+        /* columns: 2; */
+        flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: 3%;
+    }
+
+    .gallery-item {
+      flex: 0 0 31%;
+    }
+    
     .hero-image {
         height: 650px;
     }

@@ -18,9 +18,9 @@ const highlights = [
 
 const results = [
   'Cubas de la Sagra · 4–7 Sep 2025',
-  '+6000 attendees',
-  '6h live music + 12h DJ sessions',
-  '2500 burgers sold'
+  '+6000 asistentes',
+  '6h música en vivo + 12h sesiones DJs',
+  '2500 hamburguesas vendidas'
 ]
 
 const gallery = [
@@ -104,19 +104,6 @@ const gallery = [
     hero-caption="Un festival sensorial centrado en pueblos pequeños y medianos, diseñado para que las familias disfruten juntas."
     background="radial-gradient(circle at 10% 20%, rgba(216, 241, 230, 0.46) 0.1%, rgba(233, 226, 226, 0.28) 90.1%)"
     />
-    <!-- <section class="hero">
-      <div class="container">
-        <span class="eyebrow">FESTIVAL CONCEPT</span>
-        <h1>Tiento Fest</h1>
-
-        <p>
-          A sensory festival focused on small and medium-sized towns,
-          designed for families to enjoy culture, gastronomy,
-          music and entertainment together.
-        </p>
-      </div>
-    </section> -->
-
     <!-- OVERVIEW -->
     <section class="overview">
       <div class="container">

@@ -67,7 +67,7 @@ export const portfolioSections = [
             '/images/portfolio/gran/ahorro-total-esquina.png',
             '/images/portfolio/gran/bankinter.png',
             '/images/portfolio/gran/bularplac.png',
-            '/images/portfolio/gran/chatareria.png',
+            '/images/portfolio/gran/chatarreria.png',
             '/images/portfolio/gran/fed-madrilena-judo-fachada.png',
             '/images/portfolio/gran/lidl-camion.png',
             '/images/portfolio/gran/volks-wagen2.png',
