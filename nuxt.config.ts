@@ -2,9 +2,23 @@
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: 'es'
+      },
+      link: [
+        {
+          rel: 'icon',
+          href: '/favicon.ico'
+        }
+      ]
+    }
+  },
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
+
 
   ssr: true,
   nitro: {

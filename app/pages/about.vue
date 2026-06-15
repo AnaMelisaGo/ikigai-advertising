@@ -1,6 +1,15 @@
-<script setup lang="ts">
+<script setup>
 import { useReveal } from '~/composables/useReveal'
 useReveal()
+
+useSeoMeta({
+  title: "Acerca de",
+  description: "Agencia integral de publicidad y marketing con producción gráfica propia.",
+  ogTitle: "Acerca de",
+  ogDescription: "Agencia integral de publicidad y marketing con producción gráfica propia.",
+
+  twitterCard: 'summary_large_image'
+})
 </script>
 
 <template>

@@ -1,9 +1,4 @@
 <script setup>
-// import { onMounted } from 'vue'
-// import gsap from 'gsap'
-// import ScrollTrigger from 'gsap/ScrollTrigger'
-
-// gsap.registerPlugin(ScrollTrigger)
 import { useReveal } from '~/composables/useReveal'
 useReveal()
 
@@ -32,65 +27,13 @@ const gallery = [
   '/images/tiento/poster-tiento3.png',
 ]
 
-// onMounted(() => {
-//   // HERO
-//   gsap.from('.hero .container > *', {
-//     opacity: 0,
-//     y: 30,
-//     duration: 1,
-//     stagger: 0.15,
-//     ease: 'power3.out'
-//   })
-
-//   // OVERVIEW
-//   gsap.from('.overview .content > *', {
-//     scrollTrigger: {
-//       trigger: '.overview',
-//       start: 'top 75%'
-//     },
-//     opacity: 0,
-//     y: 30,
-//     duration: 1,
-//     stagger: 0.12
-//   })
-
-//   gsap.from('.cover-image img', {
-//     scrollTrigger: {
-//       trigger: '.overview',
-//       start: 'top 70%'
-//     },
-//     scale: 1.05,
-//     opacity: 0,
-//     duration: 1.2,
-//     ease: 'power2.out',
-//   })
-
-//   // RESULTS
-//   gsap.from('.result-card', {
-//     scrollTrigger: {
-//       trigger: '.results',
-//       start: 'top 75%'
-//     },
-//     opacity: 0,
-//     y: 20,
-//     duration: 0.8,
-//     stagger: 0.1,
-
-//     clearProps: 'transform',
-//   })
-
-//   // GALLERY
-//   gsap.from('.gallery-item', {
-//     scrollTrigger: {
-//       trigger: '.gallery',
-//       start: 'top 80%'
-//     },
-//     opacity: 0,
-//     scale: 0.95,
-//     duration: 0.8,
-//     stagger: 0.08
-//   })
-// })
+useSeoMeta({
+  title: "Tiento Fest",
+  description: "Un festival sensorial centrado en pueblos pequeños y medianos, diseñado para que las familias disfruten juntas.",
+  ogTitle: "Tiento Fest",
+  ogDescription: "Un festival sensorial centrado en pueblos pequeños y medianos, diseñado para que las familias disfruten juntas.",
+  twitterCard: 'summary_large_image',
+})
 </script>
 
 <template>

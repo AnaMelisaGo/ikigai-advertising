@@ -98,6 +98,15 @@ onMounted(() => {
         clearProps: 'transform',
   })
 })
+
+useSeoMeta({
+  title: 'Portfolio',
+  description: 'Descubre algunos de nuestros trabajos más representativos.',
+  ogTitle: 'Portfolio',
+  ogDescription: 'Descubre algunos de nuestros trabajos más representativos.',
+
+  twitterCard: 'summary_large_image'
+})
 </script>
 
 <template>

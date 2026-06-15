@@ -69,6 +69,13 @@ onUnmounted(() => {
     carouselTimeline?.kill()
     processTimeline?.kill()
 })
+
+useSeoMeta({
+  description: 'Agencia integral de publicidad y marketing con producción gráfica propia.',
+  ogDescription: 'Agencia integral de publicidad y marketing con producción gráfica propia.',
+
+  twitterCard: 'summary_large_image'
+})
 </script>
 
 <template>

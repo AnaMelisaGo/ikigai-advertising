@@ -1,14 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'nuxt/app'
-// import gsap from 'gsap'
-// import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-// gsap.registerPlugin(ScrollTrigger)
 import { useReveal } from '~/composables/useReveal'
 useReveal()
-// const category = computed(() => route.params.category as string)
-// const category = route.params.category as string
+
 const VALID = ['graphics', 'events', 'digital']
 
 definePageMeta({
@@ -201,6 +197,15 @@ if (!pageData) {
 //         })
 //     })
 // })
+
+useSeoMeta({
+  title: pageData.value.tag,
+  description: pageData.value.title,
+  ogTitle: pageData.value.tag,
+  ogDescription: pageData.value.title,
+
+  twitterCard: 'summary_large_image'
+})
 </script>
 
 <template>
