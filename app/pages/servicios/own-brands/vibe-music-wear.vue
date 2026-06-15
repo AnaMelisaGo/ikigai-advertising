@@ -1,9 +1,4 @@
 <script setup>
-// import { onMounted, nextTick } from 'vue'
-// import gsap from 'gsap'
-// import { ScrollTrigger } from "gsap/ScrollTrigger"
-
-// gsap.registerPlugin(ScrollTrigger)
 import { useReveal } from '~/composables/useReveal'
 useReveal()
 const collaborators = [
@@ -32,7 +27,6 @@ const collaborators = [
     followers: '35K followers'
   }
 ]
-
 const products = [
   '/images/vibe/poster-promo.png',
   '/images/vibe/hoodies.png',
@@ -42,26 +36,14 @@ const products = [
   '/images/vibe/white-tshirt.png'
 ]
 
-// onMounted(async () => {
-//   await nextTick()
+useSeoMeta({
+  title: 'Vibe Music Wear',
+  description: 'Streetwear creado para los amantes de fashion, música electrónica, festivales y club culture.',
+  ogTitle: 'Vibe Music Wear',
+  ogDescription: 'Streetwear creado para los amantes de fashion, música electrónica, festivales y club culture.',
 
-//   setTimeout(() => {
-//     gsap.utils.toArray(".reveal").forEach((el) => {
-//       gsap.from(el, {
-//         opacity: 0,
-//         y: 40,
-//         duration: 1,
-//         clearProps: 'transform',
-//         scrollTrigger: {
-//           trigger: el,
-//           start: "top 85%"
-//         }
-//       })
-//     })
-
-//     ScrollTrigger.refresh()
-//   }, 300)
-// })
+  twitterCard: 'summary_large_image'
+})
 </script>
 
 <template>

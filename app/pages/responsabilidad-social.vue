@@ -1,6 +1,15 @@
 <script setup>
 import { useReveal } from '~/composables/useReveal'
 useReveal()
+
+useSeoMeta({
+  title: 'RSC',
+  description: 'Compromiso continuo con las personas, el medio ambiente y la calidad de nuestros servicios.',
+  ogTitle: 'RSC',
+  ogDescription: 'Compromiso continuo con las personas, el medio ambiente y la calidad de nuestros servicios.',
+  
+  twitterCard: 'summary_large_image'
+})
 </script>
 <template>
   <div class="rsc">

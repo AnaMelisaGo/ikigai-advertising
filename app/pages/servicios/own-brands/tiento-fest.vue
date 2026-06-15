@@ -1,9 +1,4 @@
 <script setup>
-// import { onMounted } from 'vue'
-// import gsap from 'gsap'
-// import ScrollTrigger from 'gsap/ScrollTrigger'
-
-// gsap.registerPlugin(ScrollTrigger)
 import { useReveal } from '~/composables/useReveal'
 useReveal()
 
@@ -18,9 +13,9 @@ const highlights = [
 
 const results = [
   'Cubas de la Sagra · 4–7 Sep 2025',
-  '+6000 attendees',
-  '6h live music + 12h DJ sessions',
-  '2500 burgers sold'
+  '+6000 asistentes',
+  '6h música en vivo + 12h sesiones DJs',
+  '2500 hamburguesas vendidas'
 ]
 
 const gallery = [
@@ -32,65 +27,13 @@ const gallery = [
   '/images/tiento/poster-tiento3.png',
 ]
 
-// onMounted(() => {
-//   // HERO
-//   gsap.from('.hero .container > *', {
-//     opacity: 0,
-//     y: 30,
-//     duration: 1,
-//     stagger: 0.15,
-//     ease: 'power3.out'
-//   })
-
-//   // OVERVIEW
-//   gsap.from('.overview .content > *', {
-//     scrollTrigger: {
-//       trigger: '.overview',
-//       start: 'top 75%'
-//     },
-//     opacity: 0,
-//     y: 30,
-//     duration: 1,
-//     stagger: 0.12
-//   })
-
-//   gsap.from('.cover-image img', {
-//     scrollTrigger: {
-//       trigger: '.overview',
-//       start: 'top 70%'
-//     },
-//     scale: 1.05,
-//     opacity: 0,
-//     duration: 1.2,
-//     ease: 'power2.out',
-//   })
-
-//   // RESULTS
-//   gsap.from('.result-card', {
-//     scrollTrigger: {
-//       trigger: '.results',
-//       start: 'top 75%'
-//     },
-//     opacity: 0,
-//     y: 20,
-//     duration: 0.8,
-//     stagger: 0.1,
-
-//     clearProps: 'transform',
-//   })
-
-//   // GALLERY
-//   gsap.from('.gallery-item', {
-//     scrollTrigger: {
-//       trigger: '.gallery',
-//       start: 'top 80%'
-//     },
-//     opacity: 0,
-//     scale: 0.95,
-//     duration: 0.8,
-//     stagger: 0.08
-//   })
-// })
+useSeoMeta({
+  title: "Tiento Fest",
+  description: "Un festival sensorial centrado en pueblos pequeños y medianos, diseñado para que las familias disfruten juntas.",
+  ogTitle: "Tiento Fest",
+  ogDescription: "Un festival sensorial centrado en pueblos pequeños y medianos, diseñado para que las familias disfruten juntas.",
+  twitterCard: 'summary_large_image',
+})
 </script>
 
 <template>
@@ -104,19 +47,6 @@ const gallery = [
     hero-caption="Un festival sensorial centrado en pueblos pequeños y medianos, diseñado para que las familias disfruten juntas."
     background="radial-gradient(circle at 10% 20%, rgba(216, 241, 230, 0.46) 0.1%, rgba(233, 226, 226, 0.28) 90.1%)"
     />
-    <!-- <section class="hero">
-      <div class="container">
-        <span class="eyebrow">FESTIVAL CONCEPT</span>
-        <h1>Tiento Fest</h1>
-
-        <p>
-          A sensory festival focused on small and medium-sized towns,
-          designed for families to enjoy culture, gastronomy,
-          music and entertainment together.
-        </p>
-      </div>
-    </section> -->
-
     <!-- OVERVIEW -->
     <section class="overview">
       <div class="container">

@@ -5,6 +5,10 @@ const splashDone = ref(false)
 function handleSplashFinished() {
     splashDone.value = true
 }
+
+useHead({
+    titleTemplate: (title) => title ? `${title} | Ikigai Advertising` : 'Ikigai Advertising',
+})
 </script>
 
 <template>

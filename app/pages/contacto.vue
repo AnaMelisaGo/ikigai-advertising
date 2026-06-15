@@ -7,12 +7,24 @@ const config = useRuntimeConfig()
 const phone = config.public.whatsappNumber
 const { message } = useWhatsAppMessage()
 
+const title = "Contato"
+const description = "Agencia integral de publicidad y marketing con producción gráfica propia"
+
 const openWa = () => {
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message.value)}`
     window.open(url, '_blank')
 }
 
 useReveal()
+
+useSeoMeta({
+  title: title,
+  description: description,
+  ogTitle: title,
+  ogDescription: description,
+  
+  twitterCard: 'summary_large_image'
+})
 </script>
 <template>
     <section class="bg-white min-h-screen">
