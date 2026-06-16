@@ -2,6 +2,8 @@ import { onMounted, onUnmounted, nextTick } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+gsap.registerPlugin(ScrollTrigger)
+
 export const useReveal = () => {
   let ctx: gsap.Context | null = null
 

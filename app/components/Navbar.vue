@@ -82,12 +82,6 @@ const handleScroll = () => {
     }
     lastscrollY = currentScrollY
 }
-// watch(mobileOpen, async (isOpen) => {
-//     if (isOpen) {
-//         await nextTick() // Wait for the DOM to update
-//         buildServicesTimeline() // Build the timeline after the DOM is ready
-//     }
-// })
 
 onMounted(() => {
     gsap.set(mainMobileMenu.value, {
@@ -151,18 +145,18 @@ onBeforeUnmount(() => {
                     </div>
                     <Transition name="dropdown">
                         <div class="dropdown-menu shadow-lg" v-show="servicesOpen" @mouseenter="servicesOpen = true" @mouseleave="servicesOpen = false">
-                            <NuxtLink v-for="service in services" :key="service.name" class="px-15 py-3 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="active" :to="service.link" @click="servicesOpen = false">
+                            <NuxtLink v-for="service in services" :key="service.name" class="dropdown-link px-15 py-3 text-gray-300" active-class="active" :to="service.link" @click="servicesOpen = false">
                                 {{ service.name }}
                             </NuxtLink>
 
-                            <div class="relative px-15 py-3 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="active" @mouseenter="ownBrandsOpen = true" @mouseleave="ownBrandsOpen = false">
+                            <div class="dropdown-link relative px-15 py-3 text-gray-300" active-class="active" @mouseenter="ownBrandsOpen = true" @mouseleave="ownBrandsOpen = false">
                                 Own Brands
                                 <Transition name="subdropdown">
                                     <div class="sub-dropdown-menu shadow-lg" v-show="ownBrandsOpen" @mouseenter="ownBrandsOpen = true" @mouseleave="ownBrandsOpen = false">
-                                        <NuxtLink class="block px-4 py-2 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="active" to="/servicios/own-brands/vibe-music-wear" @click="servicesOpen = false">
+                                        <NuxtLink class="dropdown-link block px-4 py-2 text-gray-300" active-class="active" to="/servicios/own-brands/vibe-music-wear" @click="servicesOpen = false">
                                             Vibe Music Wear
                                         </NuxtLink>
-                                        <NuxtLink class="block px-4 py-2 text-gray-300 hover:bg-primary/40 hover:text-white" active-class="active" to="/servicios/own-brands/tiento-fest" @click="servicesOpen = false">
+                                        <NuxtLink class="dropdown-link block px-4 py-2 text-gray-300" active-class="active" to="/servicios/own-brands/tiento-fest" @click="servicesOpen = false">
                                             Tiento Fest
                                         </NuxtLink>
                                     </div>
@@ -258,6 +252,11 @@ onBeforeUnmount(() => {
         border-radius: 10px;
     }
 
+    .dropdown-link:hover {
+        background: var(--color-primary);
+        color: white;
+    }
+
     .active {
         background: var(--color-accent);
         color: #fff;
@@ -350,6 +349,11 @@ onBeforeUnmount(() => {
     .mobile-link:hover {
         background: var(--color-primary);
         color: white;
+        transform: translate(2rem);
+    }
+    
+    .mobile-link.active:hover {
+        background: var(--color-accent);
         transform: translate(2rem);
     }
 
