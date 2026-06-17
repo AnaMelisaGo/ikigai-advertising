@@ -39,7 +39,7 @@ La empresa nace con la convicción de que toda marca tiene un propósito, y su m
 Su objetivo principal es conectar ideas con resultados reales, integrando estrategia, creatividad, diseño y producción en un solo flujo de trabajo coherente.
 
 
-![show favicon site image here](public\favicon.ico)
+![El favicon](public\favicon.ico)
 
 
 ### Funcionalidad del proyecto
@@ -78,7 +78,7 @@ La combinación busca equilibrio entre carácter creativo (Space Grotesk) y legi
 ##### 2. Esquema de colores
 El color #fff se ha usado como base limpia y elegante. #334155 para textos y estructura. #06B6D4 / #002E46 como tonos principales de contraste. Accento: #F97316 para llamadas a la acción y detalles clave
 
-![show site logo here](public\images\docs\paleta-colores.png)
+![Paleta de colores](public\images\docs\paleta-colores.png)
 
 La paleta está diseñada para transmitir:
 
@@ -91,39 +91,45 @@ La paleta está diseñada para transmitir:
 The logo was ... add detail, or remove as necessary
 
 
-![show site logo here](assets/docs/image.png)
+![Ikigai Advertising logo](public\images\docs\logo-vertical.png)
 
 
 ##### 4. Wireframing
 
 
-The wireframes were created for each individual page on three different screen sizes. All the wireframes are down below.
+Los siguientes wireframes fueron utilizados como guía durante la fase de planificación y diseño, permitiendo definir la estructura de la página web, la jerarquía de la información y la distribución de los distintos componentes antes de iniciar el desarrollo de la interfaz final.
 
 
 <details>
 <summary>Wireframes</summary>
-Home page
+
+Página de Inicio
 
 
-![Home page](#)
+![Página inicio](public\images\docs\wireframes\home-page.png)
 
 
-Wish tree page
+Servicios
 
 
-![...More pagees](#)
+![Servicios](public\images\docs\wireframes\servicios-page.png)
 
 
-Send wishes page
+Portfolio
 
 
-![Another page](#)
+![Portfolio](public\images\docs\wireframes\portfolio-page.png)
 
 
-Login/Register page
+Quienes somos
 
 
-![Login/Register page example](#)
+![Página quienes somos](public\images\docs\wireframes\about-page.png)
+
+Contacto
+
+
+![Contacto](public\images\docs\wireframes\contact-page.png)
 
 
 </details>
