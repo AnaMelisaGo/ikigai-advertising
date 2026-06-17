@@ -42,7 +42,6 @@ const contentMap: Record<string, any> = {
           'Packaging',
           'PLV',
           'Expositores',
-          // 'Displays'
         ]
       },
       {
@@ -51,7 +50,6 @@ const contentMap: Record<string, any> = {
         items: [
           'Camisetas',
           'Sudaderas',
-          // 'Bolsas',
           'Regalos'
         ]
       },
@@ -158,8 +156,6 @@ const contentMap: Record<string, any> = {
   }
 }
 
-// const pageData = computed(() => contentMap[category.value])
-// const pageData = contentMap[category]
 
 /**
  * Redirect if invalid route
@@ -171,32 +167,6 @@ if (!pageData) {
     statusMessage: 'Página no encontrada',
   })
 }
-
-// onMounted(() => {
-//   gsap.from('.hero-content', {
-//     y: 40,
-//     opacity: 0,
-//     duration: 1.2,
-//     ease: 'power3.out'
-//   })
-
-//     gsap.utils.toArray('.card').forEach((el: any, i) => {
-//         gsap.from(el, {
-//             y: 70,
-//             opacity: 0,
-//             duration: 1,
-//             delay: i * 0.03,
-//             ease: 'power3.out',
-
-//             clearProps: 'transform',
-
-//             scrollTrigger: {
-//                 trigger: el,
-//                 start: 'top 85%'
-//             }
-//         })
-//     })
-// })
 
 useSeoMeta({
   title: pageData.value.tag,

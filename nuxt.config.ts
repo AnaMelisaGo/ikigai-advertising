@@ -24,6 +24,11 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
+      routes: [
+        '/servicios/graphics',
+        '/servicios/events',
+        '/servicios/digital'
+      ],
     }
   },
 
@@ -36,6 +41,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/image',
     '@nuxt/fonts',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots'
   ],
 
   runtimeConfig: {
@@ -43,5 +50,15 @@ export default defineNuxtConfig({
       whatsappNumber: '',
     }
   },
+
+  site: {
+    url: 'https://mi-proyecto.is-great.net/',
+    name: 'Ikigai Advertising'
+  },
+
+  robots: {
+    allow: '/',
+    sitemap: 'https://mi-proyecto.is-great.net/sitemap.xml',
+  }
   
 })
