@@ -25,7 +25,7 @@
 ## Bienvenidos a Ikigai Advertising!
 
 
-![show final site image here](assets\images\docs\inicio.png)
+![show final site image here](assets/images/docs/inicio.png)
 
 
 ***
@@ -39,7 +39,7 @@ La empresa nace con la convicción de que toda marca tiene un propósito, y su m
 Su objetivo principal es conectar ideas con resultados reales, integrando estrategia, creatividad, diseño y producción en un solo flujo de trabajo coherente.
 
 ### El logo y favicon
-![El logo y favicon](assets\images\docs\logo.png)
+![El logo y favicon](assets/images/docs/logo.png)
 
 
 ### Funcionalidad del proyecto
@@ -78,7 +78,7 @@ La combinación busca equilibrio entre carácter creativo (Space Grotesk) y legi
 #### 2. Esquema de colores
 El color #fff se ha usado como base limpia y elegante. #334155 para textos y estructura. #06B6D4 / #002E46 como tonos principales de contraste. Accento: #F97316 para llamadas a la acción y detalles clave
 
-![Paleta de colores](assets\images\docs\paleta-colores.png)
+![Paleta de colores](assets/images/docs/paleta-colores.png)
 
 La paleta está diseñada para transmitir:
 
@@ -92,7 +92,7 @@ La paleta está diseñada para transmitir:
 El __ikigai__ es un concepto japonés que se refiere a la razón de ser o propósito de la vida. Lo que nos motiva a levantarnos cada día. Lo que hace que la vida valga la pena.
 
 
-![Ikigai Advertising logo](assets\images\docs\logo-vertical.png)
+![Ikigai Advertising logo](assets/images/docs/logo-vertical.png)
 
 
 #### 4. Wireframing
@@ -108,30 +108,30 @@ Los siguientes wireframes fueron utilizados como guía durante la fase de planif
 Página de Inicio
 
 
-![Página inicio](assets\images\docs\wireframes\home-page.png)
+![Página inicio](assets/images/docs/wireframes/home-page.png)
 
 
 Servicios
 
 
-![Servicios](assets\images\docs\wireframes\servicios-page.png)
+![Servicios](assets/images/docs/wireframes/servicios-page.png)
 
 
 Portfolio
 
 
-![Portfolio](assets\images\docs\wireframes\portfolio-page.png)
+![Portfolio](assets/images/docs/wireframes/portfolio-page.png)
 
 
 Quienes somos
 
 
-![Página quienes somos](assets\images\docs\wireframes\about-page.png)
+![Página quienes somos](assets/images/docs/wireframes/about-page.png)
 
 Contacto
 
 
-![Contacto](assets\images\docs\wireframes\contact-page.png)
+![Contacto](assets/images/docs/wireframes/contact-page.png)
 
 
 </details>
