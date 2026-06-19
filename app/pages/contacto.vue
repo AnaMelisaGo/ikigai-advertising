@@ -93,7 +93,7 @@ useSeoMeta({
                     Conecta con nosotros
                     </h3>
 
-                    <div class="flex gap-4">
+                    <div class="flex gap-4 flex-col">
                     <!-- Instagram -->
                     <NuxtLink to="https://www.instagram.com/" target="_blank" aria-label="Instagram"
                         class="contact-btn">
