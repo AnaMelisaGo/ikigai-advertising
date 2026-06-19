@@ -42,7 +42,8 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/fonts',
     '@nuxtjs/sitemap',
-    '@nuxtjs/robots'
+    '@nuxtjs/robots',
+    '@netlify/nuxt',
   ],
 
   runtimeConfig: {
